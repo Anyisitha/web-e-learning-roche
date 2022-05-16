@@ -1,5 +1,11 @@
+import LoginCard from "./LoginCard";
+import RegisterCard from "./RegisterCard";
+
 const useLocalComponents = () => {
-    return {};
+    return {
+        LoginCard,
+        RegisterCard
+    };
 }
 
 export default useLocalComponents;

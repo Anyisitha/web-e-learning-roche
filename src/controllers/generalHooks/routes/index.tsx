@@ -6,7 +6,8 @@ const useRoutes = () => {
     const { useScreens } = useViews();
     const {
         Home,
-        Register
+        Register,
+        Modulo
     } = useScreens();
 
     const anonymousRoutes : IAnonymousRouteProps[] = [
@@ -20,6 +21,11 @@ const useRoutes = () => {
             Component: Register,
             path: "/register",
             name: "Register",
+        },
+        {
+            Component: Modulo,
+            path: "/modulo1",
+            name: "Modulo",
         }
     ]
 

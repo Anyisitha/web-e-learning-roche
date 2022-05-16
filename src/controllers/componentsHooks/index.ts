@@ -1,5 +1,11 @@
+import useLoginCard from "./LoginCard";
+import useRegisterCard from "./RegisterCard";
+
 const useComponentsHooks = () => {
-    return {};
+    return {
+        useLoginCard,
+        useRegisterCard
+    }
 }
 
-export default useComponentsHooks;
+export default useComponentsHooks; 

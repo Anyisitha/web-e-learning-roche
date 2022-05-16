@@ -1,12 +1,25 @@
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Grid } from "@mui/material";
+import { FC } from "react";
+import { StyledContainer } from "../Home/home.styles";
+import { StyledFormRegister, StyledRoche } from "./register.styled";
+import Roche from "assets/images/logo-fundation-medicine.png"
+import useLocalComponents from "views/localComponents";
 
-const Register = () => {
+const Register: FC = (): JSX.Element => {
+    const { RegisterCard } = useLocalComponents();
+
     return (
-        <Fragment>
-            <span>Hola soy el registro!</span>
-            <Link to="/">Go to home!</Link>
-        </Fragment>
+        <StyledContainer>
+            {/* Logos roche fundation */}
+            <Grid item lg={12}>
+                <StyledRoche src={Roche} alt="logo-roche-fundation" />
+            </Grid>
+
+            {/* Formulario Register */}
+            <StyledFormRegister>
+                <RegisterCard></RegisterCard>
+            </StyledFormRegister>
+        </StyledContainer>
     );
 }
 

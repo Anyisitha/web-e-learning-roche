@@ -1,5 +1,9 @@
+import Input from "./Input";
+
 const useComponents = () => {
-    return {};
+    return {
+        Input
+    };
 }
 
 export default useComponents;
