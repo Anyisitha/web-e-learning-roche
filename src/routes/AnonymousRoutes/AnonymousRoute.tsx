@@ -4,15 +4,23 @@ import { Route, RouteComponentProps } from "react-router-dom";
 
 const AnonymousRoute: FC<IAnonymousRouteProps> = ({
     Component,
+    layout,
     ...otherProps
 }) => {
+    /** Layout */
+    const Layout = layout;
+
     return (
         <Route
             {...otherProps}
             render={(props: RouteComponentProps) => {
-                return (
-                    <Component {...props} />
-                )
+                if (Layout) {
+                    return <Layout>
+                        <Component />
+                    </Layout>
+                } else {
+                    return <Component {...props} />
+                }
             }}
         />
     )

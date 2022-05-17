@@ -3,19 +3,23 @@ import useViews from "views";
 
 const useRoutes = () => {
     /** Views */
-    const { useScreens } = useViews();
+    const { useScreens, useLayouts } = useViews();
     const {
         Home,
         Register,
         Modulo
     } = useScreens();
+    const {
+        LoginLayout
+    } = useLayouts();
 
     const anonymousRoutes : IAnonymousRouteProps[] = [
         {
             Component: Home,
             path: "/",
             name: "Home",
-            exact: true
+            exact: true,
+            layout: LoginLayout
         },
         {
             Component: Register,

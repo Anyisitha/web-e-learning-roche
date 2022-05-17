@@ -5,4 +5,5 @@ export interface IAnonymousRouteProps {
     name: string;
     path: string;
     exact?: boolean;
+    layout?: any;
 }

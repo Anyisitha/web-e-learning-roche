@@ -1,9 +1,19 @@
 import { Card, CardActions, CardContent, CardMedia, Container } from "@mui/material";
 import CuadroAmarillo from "assets/images/cuadro-amarillo.png";
-import { StyledButtom, StyledInputContainer, StyledPasswordLot, StyledTextPassword } from "./LoginCard.styled";
 import useControllers from "controllers";
 import { Link } from "react-router-dom";
 import useComponents from "views/components";
+import {
+    StyledButton,
+    StyledCard,
+    StyledCardContent,
+    StyledHeaderCard,
+    StyledInputContainer,
+    StyledPasswordLot,
+    StyledSubTitleHeader,
+    StyledTextPassword,
+    StyledTitleHeader
+} from "./LoginCard.styled";
 
 const LoginCard = () => {
     const { useComponentsHooks } = useControllers();
@@ -11,16 +21,14 @@ const LoginCard = () => {
     const { control } = useLoginCard();
 
     const { Input } = useComponents();
-
+    alert(window.innerWidth);
     return (
-        <Card sx={{ maxWidth: 476, maxHeight: 490 }}>
-            <CardMedia
-                component="img"
-                height="140"
-                src={CuadroAmarillo}
-                alt="green iguana"
-            />
-            <CardContent>
+        <StyledCard>
+            <StyledCardContent>
+                <StyledHeaderCard>
+                    <StyledTitleHeader>Iniciar Sesión</StyledTitleHeader>
+                    <StyledSubTitleHeader>Bienvenido(a)</StyledSubTitleHeader>
+                </StyledHeaderCard>
                 <Container>
                     <StyledInputContainer>
                         <Input
@@ -39,7 +47,6 @@ const LoginCard = () => {
                             widthFull
                         />
                     </StyledInputContainer>
-
                     <StyledInputContainer>
                         <Input
                             name="password"
@@ -61,21 +68,23 @@ const LoginCard = () => {
                 <StyledTextPassword item lg={12}>
                     <StyledPasswordLot>¿Olvidó su contraseña?</StyledPasswordLot>
                 </StyledTextPassword>
-            </CardContent>
-            <CardActions style={{ flexWrap: "wrap" }}>
-                <StyledTextPassword item lg={12}>
-                <Link to="/modulo1">
-                <StyledButtom isregister={false}>Iniciar sesión</StyledButtom>
-                </Link>
-                    
-                </StyledTextPassword>
-                <StyledTextPassword item lg={12}>
-                    <Link to="/register">
-                        <StyledButtom isregister>Registrarse</StyledButtom>
-                    </Link>
-                </StyledTextPassword>
-            </CardActions>
-        </Card>
+            </StyledCardContent>
+            <CardActions style={{ flexWrap: "wrap", justifyContent: "center", flexDirection: "column" }}>
+                <Container>
+                    <StyledTextPassword item lg={12}>
+                        <Link to="/modulo1">
+                            <StyledButton isregister={false}>Iniciar sesión</StyledButton>
+                        </Link>
+
+                    </StyledTextPassword>
+                    <StyledTextPassword item lg={12}>
+                        <Link to="/register">
+                            <StyledButton isregister>Registrarse</StyledButton>
+                        </Link>
+                    </StyledTextPassword>
+                </Container>
+            </CardActions>  
+        </StyledCard>
     )
 }
 

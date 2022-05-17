@@ -9,17 +9,18 @@ const Register: FC = (): JSX.Element => {
     const { RegisterCard } = useLocalComponents();
 
     return (
-        <StyledContainer>
-            {/* Logos roche fundation */}
-            <Grid item lg={12}>
-                <StyledRoche src={Roche} alt="logo-roche-fundation" />
-            </Grid>
+        // <StyledContainer>
+        //     {/* Logos roche fundation */}
+        //     <Grid item lg={12}>
+        //         <StyledRoche src={Roche} alt="logo-roche-fundation" />
+        //     </Grid>
 
-            {/* Formulario Register */}
-            <StyledFormRegister>
-                <RegisterCard></RegisterCard>
-            </StyledFormRegister>
-        </StyledContainer>
+        //     {/* Formulario Register */}
+        //     <StyledFormRegister>
+        //         <RegisterCard></RegisterCard>
+        //     </StyledFormRegister>
+        // </StyledContainer>
+        <span>Hola</span>
     );
 }
 
