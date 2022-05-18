@@ -13,7 +13,7 @@ export const StyledInputWithLabel = styled.div`
 `;
 
 export const StyledLabel = styled.label`
-    ${tw`text-base mr-4 text-white-default`}
+    ${tw`text-base mr-4 text-white`}
     font-family: "Gotham";
     font-weight: 500;
 `
@@ -23,7 +23,7 @@ export const ContainerInputComponent = styled.div<{ isGradiend?: boolean; isRoun
     ${({ isGradiend }) => isGradiend ? "background: linear-gradient(to right, #E54416, white)" : "background: white"
     };
 
-    ${({ isLine }) => isLine ? tw`bg-transparent border-b border-white-default` : tw`bg-white-default box-border rounded-md`}
+    ${({ isLine }) => isLine ? tw`bg-transparent border-b border-white` : tw`bg-white box-border rounded-md`}
     
     ${({ isRounded }) => isRounded ? tw`rounded-3xl ` : ""
     };
@@ -31,11 +31,11 @@ export const ContainerInputComponent = styled.div<{ isGradiend?: boolean; isRoun
 `;
 
 export const StyledInput = styled.input<IStyledInputProps>`
-    ${tw`w-full text-sm font-medium border-transparent outline-none h-8 rounded-md top-5 bg-transparent text-white-default`}
-    ${({ isGradiend }) => !isGradiend ? tw`text-white-default` : tw`text-black`}
+    ${tw`w-full text-sm font-medium border-transparent outline-none h-8 rounded-md top-5 bg-transparent text-white`}
+    ${({ isGradiend }) => !isGradiend ? tw`text-white` : tw`text-black`}
 
     &::placeholder {
-        ${tw`text-white-default`}
+        ${tw`text-white`}
     }
     
 `;

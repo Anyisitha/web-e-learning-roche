@@ -21,7 +21,7 @@ const LoginCard = () => {
     const { control } = useLoginCard();
 
     const { Input } = useComponents();
-    alert(window.innerWidth);
+    
     return (
         <StyledCard>
             <StyledCardContent>
