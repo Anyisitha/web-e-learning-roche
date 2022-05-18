@@ -23,7 +23,7 @@ const HeaderDashboard = () => {
                                     src={rocheLogo}
                                     alt="Roche Logo"
                                 />
-                                <StyledWelcomeText>Bienvenido(a)</StyledWelcomeText>
+                                <StyledWelcomeText>Bienvenido(a) {"Dr(a). Anyi Lozano"}</StyledWelcomeText>
                             </StyledContainerItems>
 
                             <StyledContainerItems>

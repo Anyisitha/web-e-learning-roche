@@ -19,9 +19,7 @@ export const StyledLogo = styled.img.attrs({
     className: "logo-image",
     id: "logo"
 })`
-    @media (max-width: 1024px) {
-        ${tw`w-28 px-2 py-4`}
-    }
+    ${tw`w-28 px-2 py-4`}
 `;
 
 export const StyledContainerItems = styled.div<{ isCentered?: boolean; }>`
@@ -45,6 +43,6 @@ export const StyledHomeIcon = styled(HomeOutlinedIcon)`
 `;
 
 export const StyledContainerComponent = styled(Container)`
-    ${tw`justify-center items-center`}
+    ${tw`justify-between items-center`}
     display: flex !important;
 `
