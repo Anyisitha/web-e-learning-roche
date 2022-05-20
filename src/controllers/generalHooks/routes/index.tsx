@@ -7,10 +7,12 @@ const useRoutes = () => {
     const {
         Home,
         Register,
-        Modulo
+        Modulo,
+        Dashboard
     } = useScreens();
     const {
-        LoginLayout
+        LoginLayout,
+        DashboardLayout
     } = useLayouts();
 
     const anonymousRoutes : IAnonymousRouteProps[] = [
@@ -30,6 +32,12 @@ const useRoutes = () => {
             Component: Modulo,
             path: "/modulo1",
             name: "Modulo",
+        },
+        {
+            Component: Dashboard,
+            path: "/dashboard",
+            name: "Dashboard",
+            layout: DashboardLayout
         }
     ]
 

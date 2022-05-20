@@ -6,7 +6,8 @@ module.exports = {
       colors: {
         background: {
           orange: '#E54416'
-        }
+        },
+        primary: "#E54416"
       }
     },
   },
