@@ -1,16 +1,15 @@
-import { render, RenderResult } from "@testing-library/react";
+import { mount } from "enzyme";
 import DashboardLayout from "./DashboardLayout";
 
 describe("<DashboardLayout/>", () => {
-    let dashboardLayout: RenderResult;
-    beforeEach(() => dashboardLayout = render(
+    let dashboardLayout: any;
+    beforeEach(() => dashboardLayout = mount(
         <DashboardLayout>
             <span>Hola Mundo!</span>
         </DashboardLayout>
     ));
 
     it("should show the text sent as children", () => {
-        const { getByText } = dashboardLayout;
-        expect(getByText("Hola Mundo!")).toBeInTheDocument();
+        expect(dashboardLayout.text()).toEqual("Bienvenido(a) Dr(a). Anyi LozanoHola Mundo!");
     });
 });

@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from '@mui/icons-material/Search';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { Container } from "@mui/material";
+import { Container, Drawer } from "@mui/material";
 
 export const StyledHeaderContainer = styled.div.attrs({
     className: 'header-container'
@@ -45,4 +45,8 @@ export const StyledHomeIcon = styled(HomeOutlinedIcon)`
 export const StyledContainerComponent = styled(Container)`
     ${tw`justify-between items-center`}
     display: flex !important;
+`
+
+export const StyledDrawer = styled(Drawer)`
+    ${tw``}
 `

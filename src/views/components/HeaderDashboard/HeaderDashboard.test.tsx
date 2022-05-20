@@ -10,7 +10,7 @@ const { rocheLogo } = useAssets();
 describe("<HeaderDashboard/>", () => {
     
     it("should have the same rendered image.", () => {
-        let headerDashboard: any = render(<HeaderDashboard />);
+        let headerDashboard: any = mount(<HeaderDashboard />);
         expect(headerDashboard.find("#logo").prop("src")).toEqual(rocheLogo);
     });
 });

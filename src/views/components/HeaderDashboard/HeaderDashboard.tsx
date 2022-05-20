@@ -1,7 +1,7 @@
 import useControllers from "controllers";
 import { Fragment } from "react";
-import { StyledContainerComponent, StyledContainerItems, StyledHeaderContainer, StyledHomeIcon, StyledLogo, StyledMenuIcon, StyledSearchIcon, StyledWelcomeText } from "./HeaderDashboard.styles";
-import { Container, IconButton } from "@mui/material";
+import { StyledContainerComponent, StyledContainerItems, StyledDrawer, StyledHeaderContainer, StyledHomeIcon, StyledLogo, StyledMenuIcon, StyledSearchIcon, StyledWelcomeText } from "./HeaderDashboard.styles";
+import { IconButton } from "@mui/material";
 
 
 const HeaderDashboard = () => {
@@ -10,7 +10,7 @@ const HeaderDashboard = () => {
     const { useAssets } = useGeneralHooks();
     const { rocheLogo } = useAssets();
     const { useHeaderDashboard } = useComponentsHooks();
-    const { width } = useHeaderDashboard();
+    const { width, handlerOpenDrawer, openDrawer } = useHeaderDashboard();
 
     return (
         <StyledHeaderContainer>
@@ -28,13 +28,13 @@ const HeaderDashboard = () => {
 
                             <StyledContainerItems>
                                 <IconButton>
-                                    <StyledHomeIcon />
+                                    <StyledHomeIcon fontSize="large"/>
                                 </IconButton>
                                 <IconButton>
-                                    <StyledSearchIcon />
+                                    <StyledSearchIcon fontSize="large"/>
                                 </IconButton>
-                                <IconButton>
-                                    <StyledMenuIcon />
+                                <IconButton onClick={() => handlerOpenDrawer(true)}>
+                                    <StyledMenuIcon fontSize="large"/>
                                 </IconButton>
                             </StyledContainerItems>
                         </Fragment>
@@ -46,7 +46,7 @@ const HeaderDashboard = () => {
                                 src={rocheLogo}
                                 alt="Roche Logo"
                             />
-                            <StyledWelcomeText>Bienvenido(a)</StyledWelcomeText>
+                            {/* <StyledWelcomeText>Bienvenido(a)</StyledWelcomeText> */}
                         </StyledContainerItems>
 
                         <StyledContainerItems>
@@ -56,13 +56,23 @@ const HeaderDashboard = () => {
                             <IconButton>
                                 <StyledSearchIcon />
                             </IconButton>
-                            <IconButton>
+                            <IconButton onClick={() => handlerOpenDrawer(true)}>
                                 <StyledMenuIcon />
                             </IconButton>
                         </StyledContainerItems>
                     </Fragment>
                 )
             }
+            
+            {/* drawer */}
+            <StyledDrawer 
+                anchor="right"
+                open={openDrawer}
+                onClose={() => handlerOpenDrawer(false)}
+            >
+                Hola angie Lozano
+            </StyledDrawer>
+
         </StyledHeaderContainer>
     );
 }
