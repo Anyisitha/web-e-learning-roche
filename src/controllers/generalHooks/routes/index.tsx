@@ -7,7 +7,7 @@ const useRoutes = () => {
     const {
         Home,
         Register,
-        Modulo,
+        Module,
         Dashboard
     } = useScreens();
     const {
@@ -29,9 +29,10 @@ const useRoutes = () => {
             name: "Register",
         },
         {
-            Component: Modulo,
-            path: "/modulo1",
-            name: "Modulo",
+            Component: Module,
+            path: "/module/:id",
+            name: "Module",
+            layout: DashboardLayout
         },
         {
             Component: Dashboard,
