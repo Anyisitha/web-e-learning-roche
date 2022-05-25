@@ -6,23 +6,21 @@ import { IStyledContainer, IStyledLogo } from "./Home.interfaces";
 export const StyledContainer = styled.div.attrs({
     className: 'home-container'
 }) <IStyledContainer>`
-    ${({ background }) => background && `background-image: url('${background}')`};
+    ${({ backgroundImage }) => backgroundImage && `background-image: url('${backgroundImage}')`};
     ${({ width }) => width >= 1024 ?
         tw`h-full py-8 px-12` :
-        tw`h-full p-8 bg-cover bg-center`
+        tw`h-full py-8 px-1 bg-cover bg-center`
     }
     background-color: #E54416;
     background-size: 100% 100%;
     background-position: top left;
     position: relative;
-    overflow: hidden;
 
     @media (max-width: 1366px) {
         ${tw`h-full`}
     }
 
     @media (max-width: 768px) {
-        ${tw`flex items-center`}
     }
 `
 

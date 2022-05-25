@@ -3,7 +3,7 @@ import tw from "twin.macro";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from '@mui/icons-material/Search';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { Container, Drawer } from "@mui/material";
+import { Button, Container, Drawer } from "@mui/material";
 
 export const StyledHeaderContainer = styled.div.attrs({
     className: 'header-container'
@@ -49,4 +49,13 @@ export const StyledContainerComponent = styled(Container)`
 
 export const StyledDrawer = styled(Drawer)`
     ${tw``}
+`
+
+export const StyledButtonDrawer = styled(Button)`
+    background-color: #fff !important;
+    color: #E54416 !important;
+    text-transform: none !important;
+    font-weight: bold !important;
+    font-family: "Myriad Pro";
+    ${tw`w-[80%]`}
 `

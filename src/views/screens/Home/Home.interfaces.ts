@@ -1,5 +1,5 @@
 export interface IStyledContainer {
-    background?: string;
+    backgroundImage?: string;
     width: number;
 }
 
