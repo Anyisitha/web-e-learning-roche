@@ -24,7 +24,7 @@ export const StyledCardContent = styled(CardContent)`
 
 export const StyledHeaderCard = styled.div.attrs({
     className: 'card-header'
-})`
+})<{background?: string;}>`
     ${tw`bg-[#FF931E] px-8 text-white py-4`}
 `;
 

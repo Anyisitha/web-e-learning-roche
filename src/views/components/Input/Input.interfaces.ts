@@ -13,6 +13,7 @@ export interface IInputProps {
     widthFull?: boolean;
     label?: string;
     isLine?: boolean;
+    labelTop?: boolean;
 }
 
 export interface IStyledInputProps {

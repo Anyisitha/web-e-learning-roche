@@ -1,10 +1,20 @@
 import styled from "styled-components";
 import tw from "twin.macro";
+import { Card } from "@mui/material";
 
 export const StyledCircleProgress = styled.div.attrs({
-    
-})`
+
+})<{ isBody: boolean; isFull?: boolean }>`
     ${tw`pb-8 drop-shadow-2xl`}
+    ${({ isBody, isFull }) => isFull ? tw`w-full` : isBody ? tw`w-[370px]` : tw`w-[270px]`}
+
+    @media (max-width: 500px) {
+        ${tw`w-full`}
+    }
+`
+
+export const StyledCard = styled(Card)`
+    ${tw`w-full`}
 `
 
 export const StyledPercentContainer = styled.div.attrs({

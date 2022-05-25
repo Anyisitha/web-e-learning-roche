@@ -8,11 +8,17 @@ const useRoutes = () => {
         Home,
         Register,
         Module,
-        Dashboard
+        Dashboard,
+        LoginAdmin,
+        Admin
     } = useScreens();
+
+    /** Layouts */
     const {
         LoginLayout,
-        DashboardLayout
+        DashboardLayout,
+        LoginAdminLayout,
+        AdminLayout
     } = useLayouts();
 
     const anonymousRoutes : IAnonymousRouteProps[] = [
@@ -39,6 +45,18 @@ const useRoutes = () => {
             path: "/dashboard",
             name: "Dashboard",
             layout: DashboardLayout
+        },
+        {
+            Component: LoginAdmin,
+            path: "/admin/login",
+            name: "LoginAdmin",
+            layout: LoginAdminLayout
+        },
+        {
+            Component: Admin,
+            path: "/admin",
+            name: "Admin",
+            layout: AdminLayout
         }
     ]
 

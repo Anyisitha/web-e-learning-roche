@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid, Paper } from "@mui/material";
 import styled from "styled-components";
 import tw from "twin.macro";
 
@@ -8,10 +8,11 @@ export const StyledContainer = styled.div`
     height: calc(100vh - 82px);
 `;
 
-export const StyledTab = styled(Grid)<{background?: string}>`
-    ${tw`py-4 px-4`}
+export const StyledTab = styled(Grid)<{background?: string; isBody?: boolean;}>`
+    ${tw`py-4 px-4 relative`}
     background: url('${({ background }) => background}') #fff bottom right no-repeat;
     background-size: 100% 110%;
+    ${({ isBody }) => isBody ? "height: calc(100vh - 235px);" : ""}
 `;
 
 export const StyledContainerTab = styled.div<{fullWidth?: boolean}>`
@@ -28,3 +29,33 @@ export const StyledNumberModule = styled.h1`
 export const StyledModuleName = styled.span`
     ${tw`text-xl`}
 `;
+
+export const StyledIframe = styled.iframe`
+    height: 100%;
+`
+
+export const StyledButton = styled(Button)`
+    position: absolute !important;
+    bottom: 4%;
+    right: 4%;
+`
+
+export const StyledButtonSection = styled(Button)<{disabled: boolean; completed: boolean;}>`
+    ${({ completed }) => completed ? "background-color: #F7931E !important;" : "background-color: #E54416 !important;"}
+    color: #fff !important;
+    width: 500px;
+    font-family: "Gotham-medium" !important;
+    text-transform: none !important;
+    ${tw`my-10`}
+    ${({ disabled }) => disabled ? "opacity: 0.8;" : "opacity: 1;"}
+`
+
+export const StyledSpan = styled.span`
+    font-size: 1.2rem;
+    font-family: "Myriad Pro";
+    ${tw`font-bold`}
+`
+
+export const StyledPaper = styled(Paper)`
+    width: 90%;
+`
