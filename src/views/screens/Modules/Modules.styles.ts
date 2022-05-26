@@ -3,9 +3,13 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 export const StyledContainer = styled.div`
-    ${tw`p-10`}
+    ${tw`md:p-10 p-2`}
     background: linear-gradient(to right, #c3c3c1, #fff);
     height: calc(100vh - 82px);
+  
+    @media (max-width: 1024px) {
+        ${tw`flex items-center`}
+    }
 `;
 
 export const StyledTab = styled(Grid)<{background?: string; isBody?: boolean;}>`
@@ -48,6 +52,10 @@ export const StyledButtonSection = styled(Button)<{disabled: boolean; completed:
     text-transform: none !important;
     ${tw`my-10`}
     ${({ disabled }) => disabled ? "opacity: 0.8;" : "opacity: 1;"}
+    
+    @media (max-width: 1024px){
+        ${tw`w-full`}
+    }
 `
 
 export const StyledSpan = styled.span`
@@ -56,6 +64,12 @@ export const StyledSpan = styled.span`
     ${tw`font-bold`}
 `
 
-export const StyledPaper = styled(Paper)`
-    width: 90%;
+export const StyledPaper = styled(Paper)<{ isMobile?: boolean; }>`
+  ${({ isMobile }) => !isMobile ? tw`w-[90%]` : tw`w-full flex items-center`}
+  ${({ isMobile }) => !isMobile ? "background: #fff;" : "background-color: #000 !important"}
+`
+
+export const StyledGrid = styled(Grid)`
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
 `

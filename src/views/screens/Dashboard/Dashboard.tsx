@@ -4,6 +4,7 @@ import useHelpers from "helpers";
 import React, { useEffect } from "react";
 import useComponents from "views/components";
 import { StyledButton, StyledCard, StyledContainer, StyledContainerComponent, StyledIcon, StyledImageCard, StyledMessageRemember, StyledSidebar, StyledTextCard, StyledTitleHeader } from "./Dashboard.styles";
+import DashboardMobile from "./components/Mobile";
 
 const Dashboard = () => {
 
@@ -158,20 +159,7 @@ const Dashboard = () => {
                     </React.Fragment>
 
                 ) : (
-                    /** Mobile */
-                    <React.Fragment>
-                        <Grid item xs={12}>
-                            <Container>
-                                <StyledTitleHeader>Módulos</StyledTitleHeader>
-                            </Container>
-                            <StyledContainerComponent>
-                                <Grid container>
-                                    <CircleProgress percent={20} isBody={false} isFull={true} />
-                                    <CertificateCard />
-                                </Grid>
-                            </StyledContainerComponent>
-                        </Grid>
-                    </React.Fragment>
+                    <DashboardMobile />
                 )
             }
         </StyledContainer >

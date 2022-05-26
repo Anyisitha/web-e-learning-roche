@@ -1,7 +1,6 @@
 import useApi from "api";
 import useModels from "models";
-import {ICallback} from "models/interfaces/general.interfaces";
-import {useCallback, useState} from "react";
+import {useState} from "react";
 import {useHistory} from "react-router";
 import Swal from "sweetalert2";
 
@@ -23,7 +22,6 @@ const useQuestions = () => {
     const {useSelector, useLoginSelectors} = useSelectors();
     const {questionSelector, questionNumberSelector} = useLoginSelectors();
     const selectedQuestion = useSelector(questionSelector);
-    console.log(selectedQuestion)
     const {question} = useSelector(questionNumberSelector);
 
     /** Handlers */

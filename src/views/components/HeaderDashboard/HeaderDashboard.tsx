@@ -4,6 +4,8 @@ import { StyledButtonDrawer, StyledContainerComponent, StyledContainerItems, Sty
 import { Container, Grid, IconButton } from "@mui/material";
 import useModels from "models";
 import { useHistory } from "react-router";
+import {Link} from "react-router-dom";
+import useApi from "../../../api";
 
 
 const HeaderDashboard = () => {
@@ -28,6 +30,20 @@ const HeaderDashboard = () => {
 
     const history = useHistory();
 
+    /** Api */
+    const { useActions } = useApi();
+    const { dispatch, useLoginAdminActions } = useActions();
+    const { actLogout } = useLoginAdminActions();
+
+    /** Handlers */
+    const handleLogout = () => {
+        // @ts-ignore
+        dispatch(actLogout({
+            onError: (error: any) => console.log(error),
+            onSuccess: () => history.push("/")
+        }))
+    }
+
     return (
         <StyledHeaderContainer>
             {
@@ -35,11 +51,13 @@ const HeaderDashboard = () => {
                     <StyledContainerComponent className="flex justify-between">
                         <Fragment>
                             <StyledContainerItems isCentered>
-                                <StyledLogo
-                                    onClick={() => history.push("/dashboard")}
-                                    src={rocheLogo}
-                                    alt="Roche Logo"
-                                />
+                                <Link to="/dashboard">
+                                    <StyledLogo
+                                        onClick={() => history.push("/dashboard")}
+                                        src={rocheLogo}
+                                        alt="Roche Logo"
+                                    />
+                                </Link>
                                 <StyledWelcomeText>Bienvenido(a) {`Dr(a). ${user.fullname}`}</StyledWelcomeText>
                             </StyledContainerItems>
 
@@ -109,7 +127,7 @@ const HeaderDashboard = () => {
                         ))
                     }
                     <Grid item md={12} className="flex justify-center pt-6">
-                        <StyledButtonDrawer>
+                        <StyledButtonDrawer onClick={handleLogout}>
                             Cerrar Sesión
                         </StyledButtonDrawer>
                     </Grid>

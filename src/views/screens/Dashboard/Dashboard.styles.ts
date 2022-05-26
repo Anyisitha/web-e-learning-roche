@@ -36,6 +36,9 @@ export const StyledMessageRemember = styled.span`
 
 export const StyledIcon = styled.img`
     ${tw`h-[2rem] mr-2`}
+    @media (max-width: 1024px) {
+        ${tw`h-[1.5rem]`}
+}
 `
 
 export const StyledCard = styled(Card) <{ background?: string; }>`

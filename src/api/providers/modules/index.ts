@@ -16,13 +16,23 @@ const useModulesProviders = () => {
     const getQuestions = (id?: string) => trackPromise(axios.get(`/module/get-questions/${id}`, { headers: { Authorization: `Bearer ${token}` } }));
     const setModule = () => trackPromise(axios.get(`/module/set-modules-final`, { headers: { Authorization: `Bearer ${token}` } }));
 
+    /**
+     * This function is used from send request for update the status of module (section) of the end user.
+     * @return Promise<AxiosResponse>.
+     */
+    const saveSection = () => {
+        return trackPromise(axios.get("/module/save-section", {
+            headers: { Authorization: `Bearer ${token}` }
+        }))
+    }
     return {
         getModules,
         getUserProgress,
         getModuleSections,
         setSection,
         getQuestions,
-        setModule
+        setModule,
+        saveSection
     }
 }
 

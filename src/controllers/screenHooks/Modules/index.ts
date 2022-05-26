@@ -18,7 +18,7 @@ const useModules = () => {
     /** Api */
     const { useActions } = useApi();
     const { dispatch, useModulesActions } = useActions();
-    const { actGetModuleSections, actSetSection, actGetQuestions } = useModulesActions();
+    const { actGetModuleSections, actSetSection, actGetQuestions, actSaveSection } = useModulesActions();
 
     /** Callbacks */
     const getModulesSections = useCallback(() => {
@@ -30,7 +30,8 @@ const useModules = () => {
 
         // @ts-ignore
         dispatch(actGetModuleSections(request));
-    }, [dispatch])
+        // eslint-disable-next-line
+    }, [dispatch, id])
 
     const handlerShowContent = (sectionSelected: number) => {
         setShowContent(true)
@@ -73,6 +74,18 @@ const useModules = () => {
         dispatch(actSetSection(request))
     }
 
+    /**
+     * This function is used for set the section completed.
+     * @return void.
+     */
+    const saveSection = () => {
+        // @ts-ignore
+        dispatch(actSaveSection({
+            onError: (error: any) => console.log(error),
+            onSuccess: () => window.location.reload()
+        }))
+    }
+
     return {
         id,
         sections,
@@ -82,7 +95,8 @@ const useModules = () => {
         handlerShowContent,
         section,
         handleSetSection,
-        questions
+        questions,
+        saveSection
     };
 }
 

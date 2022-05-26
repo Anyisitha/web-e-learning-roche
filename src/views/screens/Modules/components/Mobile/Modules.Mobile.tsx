@@ -1,40 +1,41 @@
-import { Container, Grid, Tooltip } from "@mui/material";
-import useControllers from "controllers";
-import React, { Fragment, useEffect } from "react";
 import {
     StyledButtonSection,
     StyledContainer,
     StyledContainerTab,
-    StyledGrid,
     StyledNumberModule,
     StyledPaper,
     StyledSpan,
     StyledTab
-} from "./Modules.styles";
-import Questions from "./Questions";
-import ModulesMobile from "./components/Mobile/Modules.Mobile";
+} from "../../Modules.styles";
+import {Container, Grid, Tooltip} from "@mui/material";
+import React, {Fragment, useEffect} from "react";
+import useControllers from "controllers";
+import Questions from "../../Questions";
 
-const Module = () => {
+const ModulesMobile = () => {
     /** Controllers */
-    const { useGeneralHooks, useScreenHooks } = useControllers();
-    const { useGeneral } = useGeneralHooks();
-    const { width } = useGeneral();
-    const { useModules, useDashboard } = useScreenHooks();
-    const { id, sections, getModulesSections, description, handlerShowContent, showContent, section, handleSetSection, questions } = useModules();
-    const { getUserProgress, userProgress } = useDashboard();
+    const {useScreenHooks} = useControllers();
+    const {useModules, useDashboard} = useScreenHooks();
+    const {userProgress, getUserProgress} = useDashboard();
+    const {
+        id,
+        showContent,
+        description,
+        sections,
+        section,
+        questions,
+        handlerShowContent,
+        getModulesSections,
+        saveSection
+    } = useModules();
 
     /** Effects */
     useEffect(() => {
+        getModulesSections();
         getUserProgress();
     }, [getModulesSections, section, getUserProgress])
 
-    useEffect(() => {
-        getModulesSections();
-        // eslint-disable-next-line
-    }, [id]);
-
-
-    const Buttons = ({ index, id, name }: { index: number; id: number; name: string; }) => {
+    const Buttons = ({index, id, name}: { index: number; id: number; name: string; }) => {
         if (index > userProgress.sectionFinished) {
             return (
                 <Tooltip title="Contenido no activo">
@@ -71,11 +72,11 @@ const Module = () => {
         }
     }
 
-    return width >= 1024 ? (
+    return (
         <StyledContainer>
             <Container>
                 <Grid container>
-                    <StyledContainerTab>
+                    <StyledContainerTab fullWidth>
                         <StyledTab item md={12}>
                             <StyledNumberModule>Módulo {id}</StyledNumberModule>
                         </StyledTab>
@@ -86,7 +87,17 @@ const Module = () => {
                         <StyledTab background={require('assets/images/ondas.png')} item md={12} isBody>
                             {
                                 showContent ? (
-                                    <Fragment>
+                                    <div className="relative h-full">
+                                        {
+                                            section.content.type !== "Test" && (
+                                                <span
+                                                    className="text-white absolute z-[1] right-[5%] top-[3%] cursor-pointer"
+                                                    onClick={saveSection}
+                                                >
+                                                    X
+                                                </span>
+                                            )
+                                        }
                                         {
                                             section.content.type === "AV" ? (
                                                 <iframe
@@ -94,7 +105,10 @@ const Module = () => {
                                                     height="100%"
                                                     width="100%"
                                                     title="Av-iframe"
-                                                ></iframe>
+                                                    className="relative"
+                                                >
+
+                                                </iframe>
                                             ) : section.content.type === "Video" ? (
                                                 <video
                                                     controls
@@ -102,45 +116,44 @@ const Module = () => {
                                                     src={section.content.content}
                                                     height="100%"
                                                     width="100%"
-                                                    style={{ height: "100%" }}
-                                                    onEnded={() => handleSetSection(section.id)}
+                                                    style={{height: "100%"}}
+                                                    onEnded={saveSection}
                                                 ></video>
                                             ) : (
                                                 <Grid item md={12} className="flex justify-center h-full">
-                                                    <StyledPaper elevation={6}>
+                                                    <StyledPaper elevation={6} isMobile>
                                                         <Questions
                                                             module={id}
                                                             description={description}
                                                             questions={questions}
-                                                            isMobile={false}
+                                                            isMobile={true}
                                                         />
                                                     </StyledPaper>
                                                 </Grid>
                                             )
                                         }
-                                    </Fragment>
+                                    </div>
                                 ) : (
                                     <Fragment>
                                         <StyledSpan>{description}</StyledSpan>
-                                        <Grid container className="items-center mt-16">
+                                        <Grid container className="items-center h-[65%] mt-16">
                                             {
                                                 sections.map((item: any, index: number) => (
-                                                    <StyledGrid item md={12} className="flex justify-center my-8">
-                                                        <Buttons name={item.name} id={item.id} index={index} />
-                                                    </StyledGrid>
+                                                    <Grid item md={12} xs={12}>
+                                                        <Buttons name={item.name} id={item.id} index={index}/>
+                                                    </Grid>
                                                 ))
                                             }
                                         </Grid>
                                     </Fragment>
-                                )}
+                                )
+                            }
                         </StyledTab>
                     </StyledContainerTab>
                 </Grid>
-            </Container >
-        </StyledContainer >
-    ) : (
-        <ModulesMobile/>
-    )
+            </Container>
+        </StyledContainer>
+    );
 }
 
-export default Module;
+export default ModulesMobile;

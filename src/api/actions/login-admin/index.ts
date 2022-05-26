@@ -1,8 +1,8 @@
 import useProviders from "api/providers";
 import { ILoginAdminAction } from "models/interfaces/LoginAdmin.interfaces";
+import { ICallback } from "models/interfaces/general.interfaces";
 import useStrings from "strings";
 import { Dispatch } from "redux";
-
 
 const useLoginAdminActions = () => {
     /** Provider */
@@ -33,8 +33,31 @@ const useLoginAdminActions = () => {
         }
     }
 
+    /**
+     * This action is used from logout the user.
+     * @return Dispatch.
+     */
+    const actLogout = (request: ICallback) => async(dispatch: Dispatch) => {
+        // Destructuring of the request parameter.
+        const { onSuccess, onError } = request;
+        try {
+            dispatch({
+                type: LOGIN,
+                payload: {
+                    user: {},
+                    token: ""
+                }
+            });
+
+            onSuccess && onSuccess()
+        } catch (e) {
+            onError && onError(e);
+        }
+    }
+
     return {
-        actLoginAdmin
+        actLoginAdmin,
+        actLogout
     };
 }
 

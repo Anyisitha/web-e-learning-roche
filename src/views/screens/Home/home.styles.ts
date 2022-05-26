@@ -37,7 +37,7 @@ export const StyledLogo = styled.img.attrs({
 export const StyledImagen1 = styled.img.attrs({
     className: 'login-image'
 })`
-    ${tw`w-[70%] h-[70%]`}
+    ${tw`w-[80%] h-[90%]`}
 
     @media (max-width: 1279px) {
         ${tw`w-64`}

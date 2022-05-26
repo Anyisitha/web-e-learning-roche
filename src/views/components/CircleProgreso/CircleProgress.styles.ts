@@ -68,9 +68,16 @@ export const StyledAvancedText = styled.b`
         color: #f15a24;
         font-size: 20px;
         font-family: "Myriad Pro";
+  @media (max-width: 1024px){
+    ${tw`text-[15px]`}
+  }
 `
 
 export const StyledSpan = styled.span`
     font-size: 20px;
     font-family: "Myriad Pro";
+    
+    @media (max-width: 1024px){
+        ${tw`text-[15px]`}
+    }
 `

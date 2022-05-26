@@ -1,4 +1,3 @@
-import { AnyAsyncThunk } from "@reduxjs/toolkit/dist/matchers";
 import useProviders from "api/providers";
 import { ICallback } from "models/interfaces/general.interfaces";
 import { IGetModuleSection } from "models/interfaces/modules.interfaces";
@@ -13,7 +12,8 @@ const useModulesActions = () => {
         getModuleSections,
         setSection,
         getQuestions,
-        setModule
+        setModule,
+        saveSection
     } = useModulesProviders();
 
 
@@ -117,6 +117,17 @@ const useModulesActions = () => {
         }
     }
 
+    const actSaveSection = (request: ICallback) => async(dispatch: Dispatch) => {
+        const {onError,onSuccess} = request;
+        try {
+            await saveSection();
+
+            onSuccess && onSuccess();
+        }catch (e) {
+            onError && onError(e);
+        }
+    }
+
     return {
         actGetModules,
         actGetUserProgress,
@@ -125,7 +136,8 @@ const useModulesActions = () => {
         actGetQuestions,
         actSetModuleFinished,
         actSetQuestion,
-        actSetQuestionNumber
+        actSetQuestionNumber,
+        actSaveSection
     };
 }
 
