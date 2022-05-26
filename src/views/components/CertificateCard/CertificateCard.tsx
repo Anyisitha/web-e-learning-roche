@@ -1,16 +1,17 @@
 import { Card, CardContent } from "@mui/material";
 import useControllers from "controllers";
 import { StledCertificateContainer, StyledAvancedText1, StyledCertificate, StyledCertificateCard } from "./CertificateCard.styles";
+import {FC} from "react";
 
-const CertificateCard = () => {
+const CertificateCard : FC<{isBody?: boolean}>= ({ isBody }) => {
 
     const { useGeneralHooks } = useControllers();
     const { useAssets } = useGeneralHooks();
     const { certificado } = useAssets();
 
     return (
-        <StyledCertificateCard>
-            <Card sx={{ width: 270 }}>
+        <StyledCertificateCard isBody={isBody}>
+            <Card sx={{ width: isBody ? "100%" : 270 }}>
                 <CardContent>
                     <StyledAvancedText1>Certificado</StyledAvancedText1>
                     <StledCertificateContainer>

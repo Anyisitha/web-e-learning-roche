@@ -3,8 +3,9 @@ import tw from "twin.macro";
 
 export const StyledCertificateCard = styled.div.attrs({
 
-})`
+})<{isBody?: boolean}>`
     ${tw`drop-shadow-2xl`}
+    ${({ isBody }) => isBody ? tw`w-full` : tw`w-[270px]`}
 `
 
 export const StyledAvancedText1 = styled.b`
