@@ -63,7 +63,7 @@ const HeaderDashboard = () => {
 
                             <StyledContainerItems>
                                 <IconButton>
-                                    <StyledHomeIcon fontSize="large" />
+                                    <StyledHomeIcon fontSize="large" onClick={() => history.push("/dashboard")} />
                                 </IconButton>
                                 <IconButton>
                                     <StyledSearchIcon fontSize="large" />
@@ -85,8 +85,8 @@ const HeaderDashboard = () => {
                         </StyledContainerItems>
 
                         <StyledContainerItems>
-                            <IconButton>
-                                <StyledHomeIcon />
+                            <IconButton onClick={() => history.push("/dashboard")}>
+                                <StyledHomeIcon  />
                             </IconButton>
                             <IconButton>
                                 <StyledSearchIcon />

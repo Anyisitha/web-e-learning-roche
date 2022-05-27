@@ -20,7 +20,7 @@ const Module = () => {
     const { useGeneral } = useGeneralHooks();
     const { width } = useGeneral();
     const { useModules, useDashboard } = useScreenHooks();
-    const { id, sections, getModulesSections, description, handlerShowContent, showContent, section, handleSetSection, questions } = useModules();
+    const { id, sections, getModulesSections, saveSection, description, handlerShowContent, showContent, section, handleSetSection, questions } = useModules();
     const { getUserProgress, userProgress } = useDashboard();
 
     /** Effects */
@@ -88,6 +88,16 @@ const Module = () => {
                                 showContent ? (
                                     <Fragment>
                                         {
+                                            section.content.type !== "Test" && (
+                                                <span
+                                                    className="text-white absolute z-[1] right-[5%] top-[3%] cursor-pointer"
+                                                    onClick={saveSection}
+                                                >
+                                                    X
+                                                </span>
+                                            )
+                                        }
+                                        {
                                             section.content.type === "AV" ? (
                                                 <iframe
                                                     src={section.content.content}
@@ -103,7 +113,7 @@ const Module = () => {
                                                     height="100%"
                                                     width="100%"
                                                     style={{ height: "100%" }}
-                                                    onEnded={() => handleSetSection(section.id)}
+                                                    onEnded={saveSection}
                                                 ></video>
                                             ) : (
                                                 <Grid item md={12} className="flex justify-center h-full">
