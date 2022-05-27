@@ -6,7 +6,6 @@ import {
     StyledMain,
     StyledSubContainer
 } from "./LoginLayout.styles";
-import { Grid } from "@mui/material";
 
 const LoginLayout: FC<ILoginLayoutProps> = ({ children }) => {
     /** Components */
@@ -15,7 +14,7 @@ const LoginLayout: FC<ILoginLayoutProps> = ({ children }) => {
 
     return (
         <StyledContainer
-            backgroundImage={require("assets/images/fondo.gif")}
+            backgroundImage={window.innerWidth >= 1024 ? require("assets/images/fondo.gif") : require("assets/images/gitMovil.gif")} 
         >
             <StyledSubContainer>
                 <HeaderLogin />

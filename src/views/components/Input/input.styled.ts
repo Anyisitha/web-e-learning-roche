@@ -5,7 +5,7 @@ import { IStyledInputProps } from "./Input.interfaces";
 export const StyledInputContent = styled.div.attrs({
     className: 'input-content'
 })`
-    ${tw`relative flex flex-col justify-center`}
+    ${tw`relative flex flex-col justify-center w-full`}
 `;
 
 export const StyledInputWithLabel = styled.div`
@@ -14,7 +14,7 @@ export const StyledInputWithLabel = styled.div`
 
 export const StyledLabel = styled.label`
     ${tw`text-base mr-4 text-white`}
-    font-family: "Gotham";
+    font-family: "Gotham-medium";
     font-weight: 500;
 `
 
@@ -28,11 +28,14 @@ export const ContainerInputComponent = styled.div<{ isGradiend?: boolean; isRoun
     ${({ isRounded }) => isRounded ? tw`rounded-3xl ` : ""
     };
     ${({ widthFull }) => widthFull ? tw`w-full` : tw`w-auto`}
+    ${({ isRounded }) => isRounded ? "box-shadow: 2px 2px 3px #000 !important;" : "" }
 `;
 
 export const StyledInput = styled.input<IStyledInputProps>`
-    ${tw`w-full text-sm font-medium border-transparent outline-none h-8 rounded-md top-5 bg-transparent text-white`}
-    ${({ isGradiend }) => !isGradiend ? tw`text-white` : tw`text-black`}
+    ${tw`w-full text-sm font-medium border-transparent outline-none h-8 rounded-md top-5 bg-transparent`}
+    ${({ isRounded }) => !isRounded ? "color: #000 !important;" : "color: #fff;"}
+    ${({ isGradiend }) => !isGradiend && tw`text-white`}
+    
 
     &::placeholder {
         ${tw`text-white`}

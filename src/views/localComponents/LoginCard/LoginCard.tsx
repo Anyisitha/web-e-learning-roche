@@ -1,5 +1,5 @@
-import { Card, CardActions, CardContent, CardMedia, Container } from "@mui/material";
-import CuadroAmarillo from "assets/images/cuadro-amarillo.png";
+import { CardActions, Container } from "@mui/material";
+// import CuadroAmarillo from "assets/images/cuadro-amarillo.png";
 import useControllers from "controllers";
 import { Link } from "react-router-dom";
 import useComponents from "views/components";
@@ -16,23 +16,25 @@ import {
 } from "./LoginCard.styled";
 
 const LoginCard = () => {
-    const { useComponentsHooks } = useControllers();
-    const { useLoginCard } = useComponentsHooks();
-    const { control } = useLoginCard();
-
+    /** Components */
     const { Input } = useComponents();
+    
+    /** Controllers */
+    const { useScreenHooks } = useControllers();
+    const { useLoginAdmin } = useScreenHooks();
+    const { control, handleLoginAdmin, handleSubmit } = useLoginAdmin();
     
     return (
         <StyledCard>
             <StyledCardContent>
-                <StyledHeaderCard>
+                <StyledHeaderCard background={require('assets/images/gitMovil.gif')}>
                     <StyledTitleHeader>Iniciar Sesión</StyledTitleHeader>
                     <StyledSubTitleHeader>Bienvenido(a)</StyledSubTitleHeader>
                 </StyledHeaderCard>
                 <Container>
                     <StyledInputContainer>
                         <Input
-                            name="username"
+                            name="email"
                             control={control}
                             rules={{
                                 required: {
@@ -73,7 +75,12 @@ const LoginCard = () => {
                 <Container>
                     <StyledTextPassword item lg={12}>
                         <Link to="/modulo1">
-                            <StyledButton isregister={false}>Iniciar sesión</StyledButton>
+                            <StyledButton 
+                                isregister={false}
+                                onClick={handleSubmit(handleLoginAdmin)}
+                            >
+                                Iniciar sesión
+                            </StyledButton>
                         </Link>
 
                     </StyledTextPassword>

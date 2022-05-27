@@ -15,7 +15,8 @@ const Input: FC<IInputProps> = ({
     isRounded,
     widthFull,
     label,
-    isLine
+    isLine,
+    labelTop
 }) => {
 
     const InputComponent = (controlInput: any) => {
@@ -23,13 +24,14 @@ const Input: FC<IInputProps> = ({
 
         return (
             <StyledInputContent>
+                {label && labelTop && <StyledLabel>{label}</StyledLabel>}
                 <StyledInputWithLabel>
-                    {label && <StyledLabel>{label}</StyledLabel>}
+                    {label && !labelTop && <StyledLabel dangerouslySetInnerHTML={{ __html: label }}></StyledLabel>}
                     <ContainerInputComponent
                         isGradiend={isGradiend}
                         isRounded={isRounded}
                         widthFull={widthFull}
-                        isLine={isLine}
+                        isLine={isLine}  
                     >
 
                         {
@@ -44,7 +46,6 @@ const Input: FC<IInputProps> = ({
                             placeholder={placeholder}
                             type={type}
                             onChange={(e) => field.onChange(e)}
-                            onFocus={(e) => field.onFocus(e)}
                             onBlur={(e) => field.onBlur(e)}
                             className={className}
                             value={field.value}

@@ -1,15 +1,16 @@
 import { Card, CardContent } from "@mui/material";
-import { StyledAvancedText, StyledCircleProgress, StyledNumber, StyledPercentContainer, StyledSpan, StyledSvg } from "./CircleProgress.styles";
+import { StyledAvancedText, StyledCard, StyledCircleProgress, StyledNumber, StyledPercentContainer, StyledSpan, StyledSvg } from "./CircleProgress.styles";
 
 interface ICircleProgressProps {
     percent: number;
     isBody: boolean;
+    isFull?: boolean;
 }
 
-const CircleProgress = ({ percent, isBody }: ICircleProgressProps) => {
+const CircleProgress = ({ percent, isBody, isFull }: ICircleProgressProps) => {
     return (
-        <StyledCircleProgress>
-            <Card sx={{ width: isBody ? 370 : 270 }}>
+        <StyledCircleProgress isBody={isBody} isFull={isFull}>
+            <StyledCard >
                 <CardContent>
                     <StyledSpan><StyledAvancedText>Avance</StyledAvancedText> Proceso</StyledSpan>
                     <StyledPercentContainer>
@@ -22,8 +23,7 @@ const CircleProgress = ({ percent, isBody }: ICircleProgressProps) => {
                         </StyledNumber>
                     </StyledPercentContainer>
                 </CardContent>
-
-            </Card>
+            </StyledCard>
         </StyledCircleProgress>
     )
 }

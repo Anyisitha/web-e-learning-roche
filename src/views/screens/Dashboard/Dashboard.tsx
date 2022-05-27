@@ -1,8 +1,10 @@
 import { CardContent, Container, Grid, Paper } from "@mui/material";
 import useControllers from "controllers";
-import React from "react";
+import useHelpers from "helpers";
+import React, { useEffect } from "react";
 import useComponents from "views/components";
 import { StyledButton, StyledCard, StyledContainer, StyledContainerComponent, StyledIcon, StyledImageCard, StyledMessageRemember, StyledSidebar, StyledTextCard, StyledTitleHeader } from "./Dashboard.styles";
+import DashboardMobile from "./components/Mobile";
 
 const Dashboard = () => {
 
@@ -11,10 +13,70 @@ const Dashboard = () => {
     const { useGeneral } = useGeneralHooks();
     const { width } = useGeneral();
     const { useDashboard } = useScreenHooks();
-    const { dashboardContent } = useDashboard();
+    const {
+        modules,
+        userProgress,
+        getModules,
+        getUserProgress
+    } = useDashboard();
+
+    const { useNavigationHelpers } = useHelpers();
+    const { history } = useNavigationHelpers();
 
     /** Components */
     const { CircleProgress, CertificateCard } = useComponents();
+
+    /** Effects */
+    useEffect(() => {
+        getModules();
+        getUserProgress();
+    }, [getModules, getUserProgress]);
+
+    const ButtonComponent = ({ index, description, id }: { index: number; description: string, id: number; }) => {
+        if (userProgress.moduleFinished === index) {
+            return (
+                <Grid item lg={12} className="flex justify-center">
+                    <StyledButton onClick={() => history.push(`/module/${id}`, { description })}>Iniciar</StyledButton>
+                </Grid>
+            )
+        } else if (userProgress.moduleFinished > index) {
+            return (
+                <Grid item lg={12} className="flex justify-center">
+                    <StyledButton>Completado</StyledButton>
+                </Grid>
+            )
+        } else if (userProgress.moduleFinished < index) {
+            return (
+                <Grid item lg={12} className="flex justify-center"></Grid>
+            )
+        } else {
+            return (
+                <Grid item lg={12} className="flex justify-center"></Grid>
+            )
+        }
+    }
+
+    const ImageComponent = ({ image, index }: { image: string; index: number; }) => {
+        if (userProgress.moduleFinished === index) {
+            return (
+                <StyledImageCard src={image} alt="test" disabled={false} />
+            )
+        } else if (userProgress.moduleFinished > index) {
+            return (
+                <StyledImageCard src={image} alt="test" disabled={false} />
+            )
+        } else if (userProgress.moduleFinished < index) {
+            return (
+                <Grid item lg={12} className="flex justify-center">
+                    <StyledImageCard src={image} alt="test" disabled={true} />
+                </Grid>
+            )
+        } else {
+            return (
+                <Grid item lg={12} className="flex justify-center"></Grid>
+            )
+        }
+    }
 
     return (
         <StyledContainer background={require('assets/images/ondas.png')}>
@@ -29,7 +91,7 @@ const Dashboard = () => {
                                     </StyledContainerComponent>
 
                                     <StyledContainerComponent>
-                                        <CircleProgress percent={20} isBody={false} />
+                                        <CircleProgress percent={userProgress.percent} isBody={false} />
                                     </StyledContainerComponent>
                                     <StyledContainerComponent>
                                         <CertificateCard />
@@ -40,7 +102,7 @@ const Dashboard = () => {
                                 <Container>
                                     <StyledTitleHeader>Recuerde:</StyledTitleHeader>
                                     <StyledSidebar item md={12} isCentered notFullScreen={true}>
-                                        <CircleProgress percent={10} isBody={true} />
+                                        <CircleProgress percent={userProgress.percent} isBody={true} />
                                     </StyledSidebar>
                                     <Grid container className="items-center">
                                         <StyledIcon
@@ -64,29 +126,23 @@ const Dashboard = () => {
                                         <Paper elevation={4} sx={{ width: "97%" }}>
                                             <StyledCard background={require("assets/images/ondas-white.png")}>
                                                 <CardContent>
-                                                    <Grid container className="justify-center">
+                                                    <Grid container className="justify-center items-center">
                                                         {
-                                                            dashboardContent.map((item: any, index: number) => (
+                                                            modules && modules.map((item: any, index: number) => (
                                                                 <Grid item lg={4} key={index} className="px-3 pb-8">
                                                                     <Grid item lg={12} className="text-center pb-3">
                                                                         <Paper elevation={6}>
-                                                                            <StyledImageCard src={item.image} alt="test" disabled={!item.enabled} />
+                                                                            <ImageComponent image={item.image} index={index} />
                                                                         </Paper>
                                                                     </Grid>
 
                                                                     <Grid item lg={12} className="text-center mt-3">
-                                                                        <StyledTextCard bold>{item.module}</StyledTextCard>
+                                                                        <StyledTextCard bold>Modulo {index + 1}</StyledTextCard>
                                                                     </Grid>
                                                                     <Grid item lg={12} className="text-center pb-3">
-                                                                        <StyledTextCard bold={false} dangerouslySetInnerHTML={{ __html: item.text }}></StyledTextCard>
+                                                                        <StyledTextCard bold={false} dangerouslySetInnerHTML={{ __html: item.name }}></StyledTextCard>
                                                                     </Grid>
-                                                                    {
-                                                                        item.enabled && (
-                                                                            <Grid item lg={12} className="flex justify-center">
-                                                                                <StyledButton>Iniciar</StyledButton>
-                                                                            </Grid>
-                                                                        )
-                                                                    }
+                                                                    <ButtonComponent index={index} description={item.name} id={item.id} />
                                                                 </Grid>
                                                             ))
                                                         }
@@ -103,12 +159,7 @@ const Dashboard = () => {
                     </React.Fragment>
 
                 ) : (
-                    /** Mobile */
-                    <React.Fragment>
-                        <StyledTitleHeader>Módulos</StyledTitleHeader>
-                        <CircleProgress percent={10} isBody={false} />
-                        <CertificateCard />
-                    </React.Fragment>
+                    <DashboardMobile />
                 )
             }
         </StyledContainer >
