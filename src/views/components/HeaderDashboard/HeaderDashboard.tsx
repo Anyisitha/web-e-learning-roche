@@ -104,6 +104,7 @@ const HeaderDashboard = () => {
                 anchor="right"
                 open={openDrawer}
                 onClose={() => handlerOpenDrawer(false)}
+                className="Drawer"
             >
                 <Container>
                     <Grid item md={12} className="flex justify-center pt-6">
