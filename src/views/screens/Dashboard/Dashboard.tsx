@@ -57,6 +57,8 @@ const Dashboard = () => {
     }
 
     const ImageComponent = ({ image, index }: { image: string; index: number; }) => {
+        console.log(userProgress.moduleFinished)
+
         if (userProgress.moduleFinished === index) {
             return (
                 <StyledImageCard src={image} alt="test" disabled={false} />
@@ -67,13 +69,13 @@ const Dashboard = () => {
             )
         } else if (userProgress.moduleFinished < index) {
             return (
-                <Grid item lg={12} className="flex justify-center">
                     <StyledImageCard src={image} alt="test" disabled={true} />
-                </Grid>
             )
         } else {
             return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
+                <Grid item lg={12} className="flex justify-center">
+                    <StyledImageCard src={image} alt="test" disabled={false} />
+                </Grid>
             )
         }
     }
@@ -128,23 +130,26 @@ const Dashboard = () => {
                                                 <CardContent>
                                                     <Grid container className="justify-center items-center">
                                                         {
-                                                            modules && modules.map((item: any, index: number) => (
-                                                                <Grid item lg={4} key={index} className="px-3 pb-8">
-                                                                    <Grid item lg={12} className="text-center pb-3">
-                                                                        <Paper elevation={6}>
-                                                                            <ImageComponent image={item.image} index={index} />
-                                                                        </Paper>
+                                                            modules && modules.map((item: any, index: number) => {
+                                                                console.log(item)
+                                                                return (
+                                                                    <Grid item lg={4} key={index} className="px-3 pb-8">
+                                                                        <Grid item lg={12} className="text-center pb-3">
+                                                                            <Paper elevation={6}>
+                                                                                <ImageComponent image={item.image} index={index} />
+                                                                            </Paper>
+                                                                        </Grid>
+    
+                                                                        <Grid item lg={12} className="text-center mt-3">
+                                                                            <StyledTextCard bold>Modulo {index + 1}</StyledTextCard>
+                                                                        </Grid>
+                                                                        <Grid item lg={12} className="text-center pb-3">
+                                                                            <StyledTextCard bold={false} dangerouslySetInnerHTML={{ __html: item.name }}></StyledTextCard>
+                                                                        </Grid>
+                                                                        <ButtonComponent index={index} description={item.name} id={item.id} />
                                                                     </Grid>
-
-                                                                    <Grid item lg={12} className="text-center mt-3">
-                                                                        <StyledTextCard bold>Modulo {index + 1}</StyledTextCard>
-                                                                    </Grid>
-                                                                    <Grid item lg={12} className="text-center pb-3">
-                                                                        <StyledTextCard bold={false} dangerouslySetInnerHTML={{ __html: item.name }}></StyledTextCard>
-                                                                    </Grid>
-                                                                    <ButtonComponent index={index} description={item.name} id={item.id} />
-                                                                </Grid>
-                                                            ))
+                                                                )
+                                                            })
                                                         }
 
                                                     </Grid>

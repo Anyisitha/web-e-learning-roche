@@ -58,15 +58,18 @@ const Module = () => {
             )
         } else {
             return (
-                <StyledButtonSection
-                    disabled={index > userProgress.sectionFinished}
-                    completed={index < userProgress.sectionFinished}
-                    onClick={() => {
-                        handlerShowContent(id)
-                    }}
-                >
-                    {name}
-                </StyledButtonSection>
+                <>
+                    <StyledButtonSection
+                        disabled={index > userProgress.sectionFinished}
+                        completed={index < userProgress.sectionFinished}
+                        onClick={() => {
+                            handlerShowContent(id)
+                        }}
+                    >
+                        {name}
+                    </StyledButtonSection>
+                </>
+
             )
         }
     }
@@ -131,11 +134,13 @@ const Module = () => {
                                     </Fragment>
                                 ) : (
                                     <Fragment>
+                                        
                                         <StyledSpan>{description}</StyledSpan>
                                         <Grid container className="items-center mt-16">
                                             {
                                                 sections.map((item: any, index: number) => (
                                                     <StyledGrid item md={12} className="flex justify-center my-8">
+                                                        <img src={item.image}/>
                                                         <Buttons name={item.name} id={item.id} index={index} />
                                                     </StyledGrid>
                                                 ))
@@ -149,7 +154,7 @@ const Module = () => {
             </Container >
         </StyledContainer >
     ) : (
-        <ModulesMobile/>
+        <ModulesMobile />
     )
 }
 
