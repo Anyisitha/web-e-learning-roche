@@ -60,7 +60,9 @@ const DashboardMobile: FC = () => {
             )
         } else {
             return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
+                <Grid item lg={12} className="flex justify-center">
+
+                </Grid>
             )
         }
     }
@@ -82,7 +84,9 @@ const DashboardMobile: FC = () => {
             )
         } else {
             return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
+                <Grid item lg={12} className="flex justify-center">
+                    <StyledImageCard src={image} alt="test" disabled={false}/>
+                </Grid>
             )
         }
     }
