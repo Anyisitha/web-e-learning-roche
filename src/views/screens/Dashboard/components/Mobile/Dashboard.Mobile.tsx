@@ -41,27 +41,23 @@ const DashboardMobile: FC = () => {
     const {useNavigationHelpers} = useHelpers();
     const {history} = useNavigationHelpers();
 
-    const ButtonComponent = ({index, description, id}: { index: number; description: string, id: number; }) => {
-        if (userProgress.moduleFinished === index) {
+    const ButtonComponent = ({ index, description, id }: { index: number; description: string, id: number; }) => {
+        console.log(index)
+        if (userProgress.moduleFinished === index.toString()) {
             return (
                 <Grid item lg={12} className="flex justify-center">
-                    <StyledButton onClick={() => history.push(`/module/${id}`, {description})}>Iniciar</StyledButton>
+                    <StyledButton onClick={() => history.push(`/module/${id}`, { description })}>Iniciar</StyledButton>
                 </Grid>
             )
-        } else if (userProgress.moduleFinished > index) {
+        } else if (userProgress.moduleFinished > index.toString()) {
             return (
                 <Grid item lg={12} className="flex justify-center">
                     <StyledButton>Completado</StyledButton>
                 </Grid>
             )
-        } else if (userProgress.moduleFinished < index) {
-            return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
-            )
         } else {
             return (
                 <Grid item lg={12} className="flex justify-center">
-
                 </Grid>
             )
         }

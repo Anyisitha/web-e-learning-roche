@@ -2,6 +2,7 @@ import useProviders from "api/providers";
 import { ICallback } from "models/interfaces/general.interfaces";
 import { IGetModuleSection } from "models/interfaces/modules.interfaces";
 import { Dispatch } from "redux";
+import useStrings from "strings";
 
 const useModulesActions = () => {
     /** Providers */
@@ -15,6 +16,10 @@ const useModulesActions = () => {
         setModule,
         saveSection
     } = useModulesProviders();
+
+    // Strings
+    const {useLoginTypes} = useStrings();
+    const {USER_PROGRESS} = useLoginTypes();
 
 
     const actGetModules = (request: ICallback) => async(dispatch: Dispatch) => {
@@ -34,6 +39,11 @@ const useModulesActions = () => {
         try {
             const res = await getUserProgress();
             const { data } = res.data;
+
+            dispatch({
+                type: USER_PROGRESS,
+                payload: data
+            })
 
             onSuccess && onSuccess(data);
         } catch (error) {
