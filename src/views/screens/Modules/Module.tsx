@@ -13,6 +13,7 @@ import {
 } from "./Modules.styles";
 import Questions from "./Questions";
 import ModulesMobile from "./components/Mobile/Modules.Mobile";
+import useModels from "models";
 
 const Module = () => {
     /** Controllers */
@@ -23,17 +24,26 @@ const Module = () => {
     const { id, sections, getModulesSections, saveSection, description, handlerShowContent, showContent, section, handleSetSection, questions } = useModules();
     const { getUserProgress, userProgress } = useDashboard();
 
+    const { useSelectors } = useModels();
+    const { useSelector, useLoginSelectors } = useSelectors();
+    const { userProgressSelector } = useLoginSelectors();
+    const { moduleFinished } = useSelector(userProgressSelector)
+
     /** Effects */
     useEffect(() => {
-        getUserProgress();
-    }, [getModulesSections, section, getUserProgress])
+        const executePetitions = async () => {
+            await getUserProgress();
+        }
+
+        executePetitions();
+    }, [])
 
     useEffect(() => {
         getModulesSections();
         // eslint-disable-next-line
     }, [id]);
 
-
+    const moduleId = id;
     const Buttons = ({ index, id, name }: { index: number; id: number; name: string; }) => {
         if (index > userProgress.sectionFinished) {
             return (
@@ -134,15 +144,32 @@ const Module = () => {
                                     </Fragment>
                                 ) : (
                                     <Fragment>
-                                        
+
                                         <StyledSpan>{description}</StyledSpan>
                                         <Grid container className="items-center mt-16">
                                             {
                                                 sections.map((item: any, index: number) => (
-                                                    <StyledGrid item md={12} className="flex justify-center my-8">
-                                                        <img src={item.image}/>
-                                                        <Buttons name={item.name} id={item.id} index={index} />
-                                                    </StyledGrid>
+                                                    <>
+                                                        {
+                                                            moduleId && (parseInt(moduleFinished) > parseInt(moduleId)) ? (
+                                                                <StyledGrid item md={12} className="flex justify-center my-8">
+
+                                                                    <StyledButtonSection
+                                                                        disabled={false}
+                                                                        completed={true}
+                                                                        onClick={() => handlerShowContent(parseInt(moduleId))}
+                                                                    >
+                                                                        {item.name}
+                                                                    </StyledButtonSection>
+                                                                </StyledGrid>
+                                                            ) : (
+                                                                <StyledGrid item md={12} className="flex justify-center my-8">
+                                                                    <Buttons name={item.name} id={item.id} index={index} />
+                                                                </StyledGrid>
+                                                            )
+                                                        }
+                                                    </>
+
                                                 ))
                                             }
                                         </Grid>
