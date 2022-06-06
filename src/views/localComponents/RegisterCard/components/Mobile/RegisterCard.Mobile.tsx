@@ -122,7 +122,7 @@ const RegisterCardMobile = () => {
 
 
                         <Grid item md={4} xs={12} className="py-2.5 md:px-2.5">
-                            <span className="text-white text-justify">En el cumplimiento de la Ley 1581 de 2012 sobre Habeas Data, el régimen general de protección de datos personales y sobre
+                            <span className="text-white text-justify">En el cumplimiento de la Ley 1581 de 2012 sobre <i>Habeas Data</i>, el régimen general de protección de datos personales y sobre
                                 manejo de los mismos, acepto los términos presentados por Roche. Conozca los términos y condiciones <a
                                     href="/" className="text-black"><b>aquí.</b></a> </span>
                         </Grid>

@@ -1,6 +1,6 @@
 import { Container, Grid, Tooltip } from "@mui/material";
 import useControllers from "controllers";
-import React, { Fragment, useEffect } from "react";
+import React, { FC, Fragment, useEffect } from "react";
 import {
     StyledButtonSection,
     StyledContainer,
@@ -14,6 +14,9 @@ import {
 import Questions from "./Questions";
 import ModulesMobile from "./components/Mobile/Modules.Mobile";
 import useModels from "models";
+import { IButtonProps } from "models/interfaces/modules.interfaces";
+
+
 
 const Module = () => {
     /** Controllers */
@@ -44,45 +47,6 @@ const Module = () => {
     }, [id]);
 
     const moduleId = id;
-    const Buttons = ({ index, id, name }: { index: number; id: number; name: string; }) => {
-        if (index > userProgress.sectionFinished) {
-            return (
-                <Tooltip title="Contenido no activo">
-                    <StyledButtonSection
-                        disabled={true}
-                        completed={false}
-                    >
-                        {name}
-                    </StyledButtonSection>
-                </Tooltip>
-            )
-        } else if (index === userProgress.sectionFinished + 1) {
-            return (
-                <StyledButtonSection
-                    disabled={false}
-                    completed={false}
-                    onClick={() => handlerShowContent(id)}
-                >
-                    {name}
-                </StyledButtonSection>
-            )
-        } else {
-            return (
-                <>
-                    <StyledButtonSection
-                        disabled={index > userProgress.sectionFinished}
-                        completed={index < userProgress.sectionFinished}
-                        onClick={() => {
-                            handlerShowContent(id)
-                        }}
-                    >
-                        {name}
-                    </StyledButtonSection>
-                </>
-
-            )
-        }
-    }
 
     return width >= 1024 ? (
         <StyledContainer>
@@ -151,20 +115,30 @@ const Module = () => {
                                                 sections.map((item: any, index: number) => (
                                                     <>
                                                         {
-                                                            moduleId && (parseInt(moduleFinished) > parseInt(moduleId)) ? (
+                                                            moduleId && (moduleId < userProgress.moduleFinished) ? (
                                                                 <StyledGrid item md={12} className="flex justify-center my-8">
 
                                                                     <StyledButtonSection
                                                                         disabled={false}
                                                                         completed={true}
-                                                                        onClick={() => handlerShowContent(parseInt(moduleId))}
+                                                                        onClick={() => {
+                                                                            userProgress.sectionFinished <= index && handlerShowContent(item.id);
+                                                                        }}
                                                                     >
                                                                         {item.name}
                                                                     </StyledButtonSection>
                                                                 </StyledGrid>
                                                             ) : (
                                                                 <StyledGrid item md={12} className="flex justify-center my-8">
-                                                                    <Buttons name={item.name} id={item.id} index={index} />
+                                                                    <StyledButtonSection
+                                                                        disabled={index > userProgress.sectionFinished}
+                                                                        completed={index < userProgress.sectionFinished}
+                                                                        onClick={() => {
+                                                                            userProgress.sectionFinished <= index && handlerShowContent(item.id);
+                                                                        }}
+                                                                    >
+                                                                        {item.name} {item.id}
+                                                                    </StyledButtonSection>
                                                                 </StyledGrid>
                                                             )
                                                         }
