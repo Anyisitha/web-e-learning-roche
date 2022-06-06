@@ -14,7 +14,7 @@ const LoginLayout: FC<ILoginLayoutProps> = ({ children }) => {
 
     return (
         <StyledContainer
-            backgroundImage={window.innerWidth >= 1024 ? require("assets/images/fondo.gif") : require("assets/images/gitMovil.gif")} 
+            backgroundImage={window.innerWidth >= 1024 ? require("assets/images/fondogif.png") : require("assets/images/gitMovil.gif")} 
         >
             <StyledSubContainer>
                 <HeaderLogin />
