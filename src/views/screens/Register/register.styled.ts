@@ -8,11 +8,10 @@ export const StyledContainer = styled.div.attrs({
     background-color: #E54416;
     height: 100vh !important;
     background-size: cover;
-    padding: 4rem;
     overflow: auto;
   ${({ width }) => width >= 1024 ?
-          tw`h-full py-8 px-12` :
-          tw`h-full py-8 px-1 bg-cover bg-center`
+          tw`h-screen` :
+          tw`h-full bg-cover bg-center`
   }
     ${({ backgroundImage }) => `background-image: url('${backgroundImage}')`};
 `
@@ -34,6 +33,6 @@ export const StyledFormRegister = styled(Grid)`
     align-items: center;
 
     @media (max-width:500px){
-        margin-bottom: 250px !important;
+        margin-bottom: 20px !important;
     }
 `

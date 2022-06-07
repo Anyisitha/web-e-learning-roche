@@ -90,7 +90,7 @@ const ModulesMobile = () => {
                 <Grid container>
                     <StyledContainerTab fullWidth>
                         <StyledTab item md={12}>
-                            <StyledNumberModule>Módulo {id}</StyledNumberModule>
+                            <StyledNumberModule>MÓDULO {id}</StyledNumberModule>
                         </StyledTab>
                     </StyledContainerTab>
                 </Grid>
@@ -148,7 +148,7 @@ const ModulesMobile = () => {
                                 ) : (
                                     <Fragment>
                                         <StyledSpan>{description}</StyledSpan>
-                                        <Grid container className="items-center h-[65%] mt-16">
+                                        <Grid container className="items-center h-[65%] md:h-[40%] mt-16">
                                             {
                                                 sections.map((item: any, index: number) => (
                                                     <>

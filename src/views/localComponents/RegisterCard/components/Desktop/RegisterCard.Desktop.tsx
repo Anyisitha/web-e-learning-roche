@@ -5,12 +5,12 @@ import useControllers from "controllers";
 
 const RegisterCardDesktop = () => {
     /** Components */
-    const { Input, Checkbox } = useComponents();
+    const { Input } = useComponents();
 
     /** Controllers */
     const { useComponentsHooks } = useControllers();
     const { useRegisterCard } = useComponentsHooks();
-    const { control, isValid, handleSubmit, handleCreateUser, setValue } = useRegisterCard();
+    const { control, isValid, handleSubmit, handleCreateUser } = useRegisterCard();
 
     return (
         <Container>
@@ -66,7 +66,7 @@ const RegisterCardDesktop = () => {
                                 <Grid container>
                                     <Grid item lg={6} className="flex w-full items-center">
                                         <Grid item lg={3}>
-                                            <label className="text-right font-bold text-white">Operador logistico: *</label>
+                                            <label className="text-right font-bold text-white">Operador logístico: *</label>
                                         </Grid>
                                         <Grid item lg={9} className="flex justify-start w-full">
                                             <Input
@@ -87,7 +87,7 @@ const RegisterCardDesktop = () => {
                                     </Grid>
                                     <Grid item lg={6} className="flex w-full items-center">
                                         <Grid item lg={3}>
-                                            <label className="text-left font-bold text-white">Correo electronico: *</label>
+                                            <label className="text-left font-bold text-white">Correo electrónico: *</label>
                                         </Grid>
                                         <Grid item lg={9} className="flex justify-start w-full">
                                             <Input
@@ -153,7 +153,7 @@ const RegisterCardDesktop = () => {
                         </Container>
 
                         <StyledGridCenter moreTop>
-                            <span className="text-white">En el cumplimiento de la Ley 1581 de 2012 sobre Habeas Data, el régimen general de protección de datos personales y sobre <br />
+                            <span className="text-white">En el cumplimiento de la Ley 1581 de 2012 sobre <i>Habeas Data</i>, el régimen general de protección de datos personales y sobre <br />
                                 manejo de los mismos, acepto los términos presentados por Roche. Conozca los términos y condiciones <a
                                     href="/" className="text-black"><b>aquí.</b></a> </span>
                         </StyledGridCenter>

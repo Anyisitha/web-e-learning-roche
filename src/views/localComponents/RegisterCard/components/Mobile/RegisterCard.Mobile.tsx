@@ -8,16 +8,16 @@ import useControllers from "controllers";
 
 const RegisterCardMobile = () => {
     /** Components */
-    const {Input, Checkbox} = useComponents();
+    const {Input} = useComponents();
 
     /** Controllers */
     const {useComponentsHooks} = useControllers();
     const {useRegisterCard} = useComponentsHooks();
-    const {control, isValid, handleSubmit, handleCreateUser, setValue} = useRegisterCard();
+    const {control, isValid, handleSubmit, handleCreateUser} = useRegisterCard();
     return (
         <Container>
-            <Grid item xs={12} className="mb-[100px]">
-                <StyledPaper elevation={6} className="mt-[250px]">
+            <Grid item xs={12} className="mb-[20px]">
+                <StyledPaper elevation={6} className="mt-[30px]">
                     <StyledBackground>
                         <Grid container>
                             <Grid item md={6} xs={12} sm={6} className="mt-10 md:px-2.5">
@@ -62,7 +62,7 @@ const RegisterCardMobile = () => {
                                     type="text"
                                     isRounded
                                     rules={{}}
-                                    label="Operador logistico: "
+                                    label="Operador logístico: "
                                     widthFull
                                     labelTop
                                 />
@@ -79,7 +79,7 @@ const RegisterCardMobile = () => {
                                             message: 'El campo es requerido'
                                         }
                                     }}
-                                    label="Correo electronico: *"
+                                    label="Correo electrónico: *"
                                     widthFull
                                     labelTop
                                 />

@@ -131,7 +131,7 @@ const DashboardMobile: FC = () => {
                                         {
                                             modules && modules.map((item: any, index: number) => <Grid item md={6} xs={12}
                                                                                                        key={index}
-                                                                                                       className="px-3 pb-8">
+                                                                                                       className=" pb-8">
                                                     <Grid item lg={12} className="text-center pb-3">
                                                         <Paper elevation={6}>
                                                             <ImageComponent image={item.image} index={index}/>

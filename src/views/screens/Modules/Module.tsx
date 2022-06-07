@@ -4,6 +4,7 @@ import React, { FC, Fragment, useEffect } from "react";
 import {
     StyledButtonSection,
     StyledContainer,
+    StyledContainerSections,
     StyledContainerTab,
     StyledGrid,
     StyledNumberModule,
@@ -54,13 +55,13 @@ const Module = () => {
                 <Grid container>
                     <StyledContainerTab>
                         <StyledTab item md={12}>
-                            <StyledNumberModule>Módulo {id}</StyledNumberModule>
+                            <StyledNumberModule>MÓDULO {id}</StyledNumberModule>
                         </StyledTab>
                     </StyledContainerTab>
                 </Grid>
                 <Grid container>
                     <StyledContainerTab fullWidth>
-                        <StyledTab background={require('assets/images/ondas.png')} item md={12} isBody>
+                        <StyledTab background={require('assets/images/ondas-white.png')} item md={12} isBody>
                             {
                                 showContent ? (
                                     <Fragment>
@@ -107,47 +108,48 @@ const Module = () => {
                                         }
                                     </Fragment>
                                 ) : (
-                                    <Fragment>
+                                    <div className="flex justify-center items-center h-full">
+                                        <StyledContainerSections>
+                                            <StyledSpan>{description}</StyledSpan>
+                                            <Grid container className="items-center sm:mt-4 md:mt-4 lg:mt-4 xl:mt-4 mt-16">
+                                                {
+                                                    sections.map((item: any, index: number) => (
+                                                        <>
+                                                            {
+                                                                moduleId && (moduleId < userProgress.moduleFinished) ? (
+                                                                    <StyledGrid item md={12} className="flex justify-center my-8">
 
-                                        <StyledSpan>{description}</StyledSpan>
-                                        <Grid container className="items-center mt-16">
-                                            {
-                                                sections.map((item: any, index: number) => (
-                                                    <>
-                                                        {
-                                                            moduleId && (moduleId < userProgress.moduleFinished) ? (
-                                                                <StyledGrid item md={12} className="flex justify-center my-8">
+                                                                        <StyledButtonSection
+                                                                            disabled={false}
+                                                                            completed={true}
+                                                                            onClick={() => {
+                                                                                userProgress.sectionFinished <= index && handlerShowContent(item.id);
+                                                                            }}
+                                                                        >
+                                                                            {item.name}
+                                                                        </StyledButtonSection>
+                                                                    </StyledGrid>
+                                                                ) : (
+                                                                    <StyledGrid item md={12} className="flex justify-center my-8">
+                                                                        <StyledButtonSection
+                                                                            disabled={index > userProgress.sectionFinished}
+                                                                            completed={index < userProgress.sectionFinished}
+                                                                            onClick={() => {
+                                                                                userProgress.sectionFinished <= index && handlerShowContent(item.id);
+                                                                            }}
+                                                                        >
+                                                                            {item.name}
+                                                                        </StyledButtonSection>
+                                                                    </StyledGrid>
+                                                                )
+                                                            }
+                                                        </>
 
-                                                                    <StyledButtonSection
-                                                                        disabled={false}
-                                                                        completed={true}
-                                                                        onClick={() => {
-                                                                            userProgress.sectionFinished <= index && handlerShowContent(item.id);
-                                                                        }}
-                                                                    >
-                                                                        {item.name}
-                                                                    </StyledButtonSection>
-                                                                </StyledGrid>
-                                                            ) : (
-                                                                <StyledGrid item md={12} className="flex justify-center my-8">
-                                                                    <StyledButtonSection
-                                                                        disabled={index > userProgress.sectionFinished}
-                                                                        completed={index < userProgress.sectionFinished}
-                                                                        onClick={() => {
-                                                                            userProgress.sectionFinished <= index && handlerShowContent(item.id);
-                                                                        }}
-                                                                    >
-                                                                        {item.name} {item.id}
-                                                                    </StyledButtonSection>
-                                                                </StyledGrid>
-                                                            )
-                                                        }
-                                                    </>
-
-                                                ))
-                                            }
-                                        </Grid>
-                                    </Fragment>
+                                                    ))
+                                                }
+                                            </Grid>
+                                        </StyledContainerSections>
+                                    </div>
                                 )}
                         </StyledTab>
                     </StyledContainerTab>
