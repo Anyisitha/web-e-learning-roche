@@ -6,6 +6,10 @@ import { IContainerContent } from "models/interfaces/Dashboard.interfaces";
 export const StyledContainer = styled.div<{ background?: string; }>`
     background: url('${({ background }) => background}') bottom right no-repeat, linear-gradient(to right, #c3c3c1, #fff);
     background-size: 100% 110%;
+
+    @media (max-width:1023px){
+    padding-bottom: 10%;
+    }
 `
 
 export const StyledTitleHeader = styled.div.attrs({
@@ -44,15 +48,15 @@ export const StyledIcon = styled.img`
 export const StyledCard = styled(Card) <{ background?: string; }>`
     ${tw`my-10 py-8 px-8`}
     background: url('${({ background }) => background}') bottom right no-repeat, #E54416 !important;
-    background-size: cover !important;
+    background-size: contain !important;
 `
 
-export const StyledImageCard = styled.img<{disabled: boolean}>`
+export const StyledImageCard = styled.img<{ disabled: boolean }>`
     ${tw`w-full h-full`}
     ${({ disabled }) => disabled ? "filter: grayscale(1)" : ""}
 `;
 
-export const StyledTextCard = styled.span<{bold: boolean}>`
+export const StyledTextCard = styled.span<{ bold: boolean }>`
     ${tw`text-white text-base text-center mt-3`}
     ${({ bold }) => bold ? tw`font-bold` : ""}
     ${({ bold }) => bold ? 'font-family: "Gotham-medium" !important' : 'font-family: "Myriad Pro" !important'};
@@ -64,5 +68,7 @@ export const StyledButton = styled(Button)`
     color: #E54416 !important;
     font-weight: bold !important;
     text-transform: capitalize !important;
-    ${tw`w-[40%] h-[35px]`}
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    ${tw` h-[35px]`}
 `;

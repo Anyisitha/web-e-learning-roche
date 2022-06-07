@@ -14,7 +14,7 @@ export const StyledContainer = styled.div`
 
 export const StyledTab = styled(Grid)<{background?: string; isBody?: boolean;}>`
     ${tw`py-4 px-4 relative`}
-    background: url('${({ background }) => background}') #fff bottom right no-repeat;
+    background: url('${({ background }) => background}') #e54416 bottom right no-repeat;
     background-size: 100% 110%;
     ${({ isBody }) => isBody ? "height: calc(100vh - 235px);" : ""}
 `;
@@ -26,8 +26,8 @@ export const StyledContainerTab = styled.div<{fullWidth?: boolean}>`
 `;
 
 export const StyledNumberModule = styled.h1`
-    ${tw`text-primary text-2xl font-bold`}
-    font-family: "Myriad Pro Semibold";
+    ${tw`text-white text-2xl font-bold `}
+    font-family: "Gotham Rounded Bold";
 `;
 
 export const StyledModuleName = styled.span`
@@ -45,13 +45,20 @@ export const StyledButton = styled(Button)`
 `
 
 export const StyledButtonSection = styled(Button)<{disabled: boolean; completed: boolean;}>`
-    ${({ completed }) => completed ? "background-color: #F7931E !important;" : "background-color: #E54416 !important;"}
-    color: #fff !important;
+    ${({ completed }) => completed ? "background-color: #F7931E !important; color: #fff !important;" : "background-color: #fff !important; color: #E54416 !important;"}
+    
     width: 500px;
+    border-radius: 11px !important;
     font-family: "Gotham-medium" !important;
     text-transform: none !important;
+    
     ${tw`my-10`}
     ${({ disabled }) => disabled ? "opacity: 0.8;" : "opacity: 1;"}
+
+    &:hover {
+        background-image: linear-gradient(to right, rgb(229, 68, 22) 80%, white);
+        color: #fff !important;
+    }
     
     @media (max-width: 1024px){
         ${tw`w-full`}
@@ -60,8 +67,9 @@ export const StyledButtonSection = styled(Button)<{disabled: boolean; completed:
 
 export const StyledSpan = styled.span`
     font-size: 1.2rem;
-    font-family: "Myriad Pro";
-    ${tw`font-bold`}
+    font-family: "Gotham Rounded Bold";
+    text-decoration: underline;
+    ${tw`text-white uppercase`}
 `
 
 export const StyledPaper = styled(Paper)<{ isMobile?: boolean; }>`
@@ -72,4 +80,12 @@ export const StyledPaper = styled(Paper)<{ isMobile?: boolean; }>`
 export const StyledGrid = styled(Grid)`
   margin-top: 0.25rem !important;
   margin-bottom: 0.25rem !important;
+`
+
+export const StyledContainerSections = styled.div`
+    ${tw`p-10`}
+    background: #ffffff50;
+    height: 90%;
+    border-radius: 25px;
+    width: 90%;
 `

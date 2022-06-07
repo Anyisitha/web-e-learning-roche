@@ -8,16 +8,16 @@ import useControllers from "controllers";
 
 const RegisterCardMobile = () => {
     /** Components */
-    const {Input, Checkbox} = useComponents();
+    const {Input} = useComponents();
 
     /** Controllers */
     const {useComponentsHooks} = useControllers();
     const {useRegisterCard} = useComponentsHooks();
-    const {control, isValid, handleSubmit, handleCreateUser, setValue} = useRegisterCard();
+    const {control, isValid, handleSubmit, handleCreateUser} = useRegisterCard();
     return (
         <Container>
-            <Grid item xs={12}>
-                <StyledPaper elevation={6} className="mt-10">
+            <Grid item xs={12} className="mb-[20px]">
+                <StyledPaper elevation={6} className="mt-[30px]">
                     <StyledBackground>
                         <Grid container>
                             <Grid item md={6} xs={12} sm={6} className="mt-10 md:px-2.5">
@@ -54,107 +54,17 @@ const RegisterCardMobile = () => {
                                     labelTop
                                 />
                             </Grid>
-                            <Grid item md={12} xs={12} className="py-2.5 md:px-2.5">
-                                <span className="text-white font-bold mt-10">Tipo de documento:* </span>
-                            </Grid>
-                            <Grid container>
-                                <Grid item md={4} sm={12} className="py-2.5 md:px-2.5">
-                                    <Checkbox
-                                        label="Cedula de ciudadania"
-                                        onChange={() => setValue("document_type", "Cedula de ciudadania")}
-                                    />
-                                </Grid>
-                                <Grid item md={4} sm={12} className="py-2.5 md:px-2.5">
-                                    <Checkbox
-                                        label="Cedula de extranjeria"
-                                        onChange={() => setValue("document_type", "Cedula de extranjeria")}
-                                    />
-                                </Grid>
-                                <Grid item md={4} sm={12} className="py-2.5 md:px-2.5">
-                                    <Checkbox
-                                        label="Pasaporte"
-                                        onChange={() => setValue("document_type", "Pasaporte")}
-                                    />
-                                </Grid>
-                            </Grid>
-                            <Grid item md={6} xs={12} sm={6} className="py-2.5 md:px-2.5">
-                                <Input
-                                    control={control}
-                                    name="nationality"
-                                    type="text"
-                                    isLine
-                                    rules={{}}
-                                    label="Nacionalidad: "
-                                    widthFull
-                                    labelTop
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12} sm={6} className="py-2.5 md:px-2.5">
-                                <Input
-                                    control={control}
-                                    name="document"
-                                    type="text"
-                                    isLine
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="Número de identificación: *"
-                                    widthFull
-                                    labelTop
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12} sm={6} className="py-2.5 md:px-2.5">
-                                <Input
-                                    control={control}
-                                    name="address"
-                                    type="text"
-                                    isLine
-                                    widthFull
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="Lugar de trabajo: *"
-                                    labelTop
-                                />
-                            </Grid>
-                            <Grid item md={6} xs={12} sm={6} className="py-2.5 md:px-2.5">
-                                <Input
-                                    control={control}
-                                    name="country"
-                                    type="text"
-                                    isRounded
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="País: *"
-                                    labelTop
-                                    widthFull
-                                />
-                            </Grid>
+                            
                             <Grid item md={6} xs={12} sm={6} className="py-2.5 md:px-2.5">
                                 <Input
                                     control={control}
                                     name="city"
                                     type="text"
                                     isRounded
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="Ciudad: *"
-                                    labelTop
+                                    rules={{}}
+                                    label="Operador logístico: "
                                     widthFull
+                                    labelTop
                                 />
                             </Grid>
                             <Grid item md={6} xs={12} sm={6} className="py-2.5 md:px-2.5">
@@ -169,7 +79,7 @@ const RegisterCardMobile = () => {
                                             message: 'El campo es requerido'
                                         }
                                     }}
-                                    label="Correo electronico: *"
+                                    label="Correo electrónico: *"
                                     widthFull
                                     labelTop
                                 />
@@ -212,7 +122,7 @@ const RegisterCardMobile = () => {
 
 
                         <Grid item md={4} xs={12} className="py-2.5 md:px-2.5">
-                            <span className="text-white text-justify">En el cumplimiento de la Ley 1581 de 2012 sobre Habeas Data, el régimen general de protección de datos personales y sobre
+                            <span className="text-white text-justify">En el cumplimiento de la Ley 1581 de 2012 sobre <i>Habeas Data</i>, el régimen general de protección de datos personales y sobre
                                 manejo de los mismos, acepto los términos presentados por Roche. Conozca los términos y condiciones <a
                                     href="/" className="text-black"><b>aquí.</b></a> </span>
                         </Grid>

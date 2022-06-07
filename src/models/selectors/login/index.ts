@@ -19,10 +19,16 @@ const useLoginSelectors = () => {
         (questionNumber: any) => questionNumber
     );
 
+    const userProgressSelector = createSelector(
+        (state: any) => state.userProgress,
+        (userProgress: any) => userProgress
+    );
+
     return {
         loginSelectors,
         questionSelector,
-        questionNumberSelector
+        questionNumberSelector,
+        userProgressSelector
     };
 }
 

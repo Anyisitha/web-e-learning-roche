@@ -1,195 +1,159 @@
-import {Container, Grid} from "@mui/material";
-import {StyledBackground, StyledButton, StyledGridCenter, StyledPaper} from "../../RegisterCard.styles";
+import { Container, Grid } from "@mui/material";
+import { StyledBackground, StyledButton, StyledGridCenter, StyledPaper } from "../../RegisterCard.styles";
 import useComponents from "views/components";
 import useControllers from "controllers";
 
 const RegisterCardDesktop = () => {
     /** Components */
-    const {Input, Checkbox} = useComponents();
+    const { Input } = useComponents();
 
     /** Controllers */
-    const {useComponentsHooks} = useControllers();
-    const {useRegisterCard} = useComponentsHooks();
-    const {control, isValid, handleSubmit, handleCreateUser, setValue} = useRegisterCard();
+    const { useComponentsHooks } = useControllers();
+    const { useRegisterCard } = useComponentsHooks();
+    const { control, isValid, handleSubmit, handleCreateUser } = useRegisterCard();
 
     return (
         <Container>
             <Grid item lg={12}>
                 <StyledPaper elevation={6}>
-                    <StyledBackground>
-                        <StyledGridCenter item lg={12} className="px-32 gap-8">
-                            <Input
-                                control={control}
-                                name="name"
-                                type="text"
-                                isRounded
-                                rules={{
-                                    required: {
-                                        value: true,
-                                        message: 'El campo es requerido'
-                                    }
-                                }}
-                                label="Nombres: *"
-                                widthFull
-                            />
-                            <Input
-                                control={control}
-                                name="last_name"
-                                type="text"
-                                isRounded
-                                rules={{
-                                    required: {
-                                        value: true,
-                                        message: 'El campo es requerido'
-                                    }
-                                }}
-                                label="Apellidos: *"
-                                widthFull
-                            />
+                    <StyledBackground style={{ paddingTop: "7%" }}>
+                        <Container style={{ width: "90%", marginBottom: "4%" }}>
+                            <StyledGridCenter item lg={12}>
+                                <Grid container>
+                                    <Grid item lg={6} className="flex w-full items-center">
+                                        <Grid item lg={3}>
+                                            <label className="text-right font-bold text-white">Nombre: *</label>
+                                        </Grid>
+                                        <Grid item lg={9} className="flex justify-start w-full">
+                                            <Input
+                                                control={control}
+                                                name="name"
+                                                type="text"
+                                                isRounded
+                                                rules={{
+                                                    required: {
+                                                        value: true,
+                                                        message: 'El campo es requerido'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
 
-                        </StyledGridCenter>
 
-                        <StyledGridCenter item lg={12} moreTop className="flex justify-center px-16">
-                            <span className="text-white font-bold">Tipo de <br/> documento:* </span>
-                            <Checkbox
-                                label="Cedula de <br/> ciudadania"
-                                onChange={() => setValue("document_type", "Cedula de ciudadania")}
-                            />
-                            <Checkbox
-                                label="Cedula de <br/> extranjeria"
-                                onChange={() => setValue("document_type", "Cedula de extranjeria")}
-                            />
-                            <Checkbox
-                                label="Pasaporte"
-                                onChange={() => setValue("document_type", "Pasaporte")}
-                            />
-                            <Input
-                                control={control}
-                                name="nationality"
-                                type="text"
-                                isLine
-                                rules={{}}
-                                label="Nacionalidad: "
-                                widthFull
-                            />
-                        </StyledGridCenter>
+                                    </Grid>
+                                    <Grid item lg={6} className="flex w-full items-center">
+                                        <Grid item lg={3}>
+                                            <label className="text-left font-bold text-white">Apellidos: *</label>
+                                        </Grid>
+                                        <Grid item lg={9} className="flex justify-start w-full">
+                                            <Input
+                                                control={control}
+                                                name="last_name"
+                                                type="text"
+                                                isRounded
+                                                rules={{
+                                                    required: {
+                                                        value: true,
+                                                        message: 'El campo es requerido'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </StyledGridCenter>
+                            <StyledGridCenter item lg={12} moreTop>
+                                <Grid container>
+                                    <Grid item lg={6} className="flex w-full items-center">
+                                        <Grid item lg={3}>
+                                            <label className="text-right font-bold text-white">Operador logístico: *</label>
+                                        </Grid>
+                                        <Grid item lg={9} className="flex justify-start w-full">
+                                            <Input
+                                                control={control}
+                                                name="city"
+                                                type="text"
+                                                isRounded
+                                                rules={{
+                                                    required: {
+                                                        value: true,
+                                                        message: 'El campo es requerido'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
 
-                        <StyledGridCenter item lg={12} moreTop className="px-16 gap-8">
-                            <Input
-                                control={control}
-                                name="document"
-                                type="text"
-                                isLine
-                                rules={{
-                                    required: {
-                                        value: true,
-                                        message: 'El campo es requerido'
-                                    }
-                                }}
-                                label="Número de identificación: *"
-                                widthFull
-                            />
-                            <Input
-                                control={control}
-                                name="address"
-                                type="text"
-                                isLine
-                                widthFull
-                                rules={{
-                                    required: {
-                                        value: true,
-                                        message: 'El campo es requerido'
-                                    }
-                                }}
-                                label="Lugar de trabajo: *"
-                            />
 
-                        </StyledGridCenter>
+                                    </Grid>
+                                    <Grid item lg={6} className="flex w-full items-center">
+                                        <Grid item lg={3}>
+                                            <label className="text-left font-bold text-white">Correo electrónico: *</label>
+                                        </Grid>
+                                        <Grid item lg={9} className="flex justify-start w-full">
+                                            <Input
+                                                control={control}
+                                                name="email"
+                                                type="text"
+                                                isRounded
+                                                rules={{
+                                                    required: {
+                                                        value: true,
+                                                        message: 'El campo es requerido'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </StyledGridCenter>
+                            <StyledGridCenter item lg={12} moreTop>
+                                <Grid container>
+                                    <Grid item lg={6} className="flex w-full items-center">
+                                        <Grid item lg={3}>
+                                            <label className="text-right font-bold text-white">Contrasena: *</label>
+                                        </Grid>
+                                        <Grid item lg={9} className="flex justify-start w-full">
+                                            <Input
+                                                control={control}
+                                                name="password"
+                                                type="password"
+                                                isRounded
+                                                rules={{
+                                                    required: {
+                                                        value: true,
+                                                        message: 'El campo es requerido'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
 
-                        <StyledGridCenter item lg={12} moreTop>
-                            <div className="mr-10">
-                                <Input
-                                    control={control}
-                                    name="country"
-                                    type="text"
-                                    isRounded
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="País: *"
-                                />
-                            </div>
 
-                            <div className="mr-10">
-                                <Input
-                                    control={control}
-                                    name="city"
-                                    type="text"
-                                    isRounded
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="Ciudad: *"
-                                />
-                            </div>
-
-                            <div>
-                                <Input
-                                    control={control}
-                                    name="email"
-                                    type="text"
-                                    isRounded
-                                    rules={{
-                                        required: {
-                                            value: true,
-                                            message: 'El campo es requerido'
-                                        }
-                                    }}
-                                    label="Correo <br/> electronico: *"
-                                />
-                            </div>
-
-                        </StyledGridCenter>
-
-                        <StyledGridCenter item lg={12} moreTop className="px-28 gap-8">
-                            <Input
-                                control={control}
-                                name="password"
-                                type="password"
-                                isRounded
-                                rules={{
-                                    required: {
-                                        value: true,
-                                        message: 'El campo es requerido'
-                                    }
-                                }}
-                                label="Contraseña: *"
-                                widthFull
-                            />
-                            <Input
-                                control={control}
-                                name="confirm_password"
-                                type="password"
-                                isRounded
-                                rules={{
-                                    required: {
-                                        value: true,
-                                        message: 'El campo es requerido'
-                                    }
-                                }}
-                                label="Confirmar <br/> Contraseña: *"
-                                widthFull
-                            />
-                        </StyledGridCenter>
+                                    </Grid>
+                                    <Grid item lg={6} className="flex w-full items-center">
+                                        <Grid item lg={3}>
+                                            <label className="text-left font-bold text-white">Confirmar contrasena: *</label>
+                                        </Grid>
+                                        <Grid item lg={9} className="flex justify-start w-full">
+                                            <Input
+                                                control={control}
+                                                name="confirm_password"
+                                                type="password"
+                                                isRounded
+                                                rules={{
+                                                    required: {
+                                                        value: true,
+                                                        message: 'El campo es requerido'
+                                                    }
+                                                }}
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </StyledGridCenter>
+                        </Container>
 
                         <StyledGridCenter moreTop>
-                            <span className="text-white">En el cumplimiento de la Ley 1581 de 2012 sobre Habeas Data, el régimen general de protección de datos personales y sobre <br/>
+                            <span className="text-white">En el cumplimiento de la Ley 1581 de 2012 sobre <i>Habeas Data</i>, el régimen general de protección de datos personales y sobre <br />
                                 manejo de los mismos, acepto los términos presentados por Roche. Conozca los términos y condiciones <a
                                     href="/" className="text-black"><b>aquí.</b></a> </span>
                         </StyledGridCenter>

@@ -18,27 +18,32 @@ const Register: FC = (): JSX.Element => {
             {
                 width >= 1024 ? (
                     <StyledContainer width={width} backgroundImage={window.innerWidth >= 1024 ? require("assets/images/fondo.gif") : require("assets/images/gitMovil.gif")}>
-                        {/* Logos roche fundation */}
-                        <Grid item lg={12}>
-                            <StyledRoche src={Roche} alt="logo-roche-fundation" />
-                        </Grid>
+                        <div className="bg-[#e54416de] p-8 h-full">
+                            {/* Logos roche fundation */}
+                            <Grid item lg={12}>
+                                <StyledRoche src={Roche} alt="logo-roche-fundation" />
+                            </Grid>
 
-                        {/* Formulario Register */}
-                        <StyledFormRegister>
-                            <RegisterCard></RegisterCard>
-                        </StyledFormRegister>
+                            {/* Formulario Register */}
+                            <StyledFormRegister>
+                                <RegisterCard></RegisterCard>
+                            </StyledFormRegister>
+                        </div>
+
                     </StyledContainer>
                 ) : (
                     <StyledContainer width={width} backgroundImage={window.innerWidth >= 1024 ? require("assets/images/fondo.gif") : require("assets/images/gitMovil.gif")}>
-                        {/* Logos roche fundation */}
-                        <Grid item sm={12}>
-                            <StyledRoche src={Roche} alt="logo-roche-fundation" />
-                        </Grid>
+                        <div className="bg-[#e54416de] p-4">
+                            {/* Logos roche fundation */}
+                            <Grid item sm={12}>
+                                <StyledRoche src={Roche} alt="logo-roche-fundation" />
+                            </Grid>
 
-                        {/* Formulario Register */}
-                        <StyledFormRegister>
-                            <RegisterCard></RegisterCard>
-                        </StyledFormRegister>
+                            {/* Formulario Register */}
+                            <StyledFormRegister>
+                                <RegisterCard></RegisterCard>
+                            </StyledFormRegister>
+                        </div>
                     </StyledContainer>
                 )
             }

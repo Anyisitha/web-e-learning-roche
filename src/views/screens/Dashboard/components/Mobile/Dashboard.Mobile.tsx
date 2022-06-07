@@ -41,26 +41,24 @@ const DashboardMobile: FC = () => {
     const {useNavigationHelpers} = useHelpers();
     const {history} = useNavigationHelpers();
 
-    const ButtonComponent = ({index, description, id}: { index: number; description: string, id: number; }) => {
-        if (userProgress.moduleFinished === index) {
+    const ButtonComponent = ({ index, description, id }: { index: number; description: string, id: number; }) => {
+        console.log(index)
+        if (userProgress.moduleFinished === index.toString()) {
             return (
                 <Grid item lg={12} className="flex justify-center">
-                    <StyledButton onClick={() => history.push(`/module/${id}`, {description})}>Iniciar</StyledButton>
+                    <StyledButton onClick={() => history.push(`/module/${id}`, { description })}>Iniciar</StyledButton>
                 </Grid>
             )
-        } else if (userProgress.moduleFinished > index) {
+        } else if (userProgress.moduleFinished > index.toString()) {
             return (
                 <Grid item lg={12} className="flex justify-center">
                     <StyledButton>Completado</StyledButton>
                 </Grid>
             )
-        } else if (userProgress.moduleFinished < index) {
-            return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
-            )
         } else {
             return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
+                <Grid item lg={12} className="flex justify-center">
+                </Grid>
             )
         }
     }
@@ -82,7 +80,9 @@ const DashboardMobile: FC = () => {
             )
         } else {
             return (
-                <Grid item lg={12} className="flex justify-center"></Grid>
+                <Grid item lg={12} className="flex justify-center">
+                    <StyledImageCard src={image} alt="test" disabled={false}/>
+                </Grid>
             )
         }
     }
@@ -131,7 +131,7 @@ const DashboardMobile: FC = () => {
                                         {
                                             modules && modules.map((item: any, index: number) => <Grid item md={6} xs={12}
                                                                                                        key={index}
-                                                                                                       className="px-3 pb-8">
+                                                                                                       className=" pb-8">
                                                     <Grid item lg={12} className="text-center pb-3">
                                                         <Paper elevation={6}>
                                                             <ImageComponent image={item.image} index={index}/>

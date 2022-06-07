@@ -1,5 +1,5 @@
-import {Container, Grid, Modal} from "@mui/material";
-import {Fragment, useEffect, useState} from "react";
+import { Container, Grid, Modal } from "@mui/material";
+import { Fragment, useEffect, useState } from "react";
 import {
     StyledButton,
     StyledContainerQuestions,
@@ -18,14 +18,14 @@ interface IQuestionsProps {
     isMobile: boolean;
 }
 
-const Questions = ({module, description, questions, isMobile}: IQuestionsProps) => {
+const Questions = ({ module, description, questions, isMobile }: IQuestionsProps) => {
     /** States */
     const [showQuestions, setShowQuestion] = useState<boolean>(false);
 
     /** Controllers */
-    const {useComponentsHooks} = useControllers();
-    const {useQuestions} = useComponentsHooks();
-    const {validateQuestion, handleChange, selectedQuestion, question, resetTest} = useQuestions();
+    const { useComponentsHooks } = useControllers();
+    const { useQuestions } = useComponentsHooks();
+    const { validateQuestion, handleChange, selectedQuestion, question, resetTest, answers } = useQuestions();
 
     /** Effects*/
     useEffect(() => {
@@ -39,13 +39,16 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
         // eslint-disable-next-line
     }, []);
 
+    let correctAnswer = answers.find((item: any) => {
+        return item.is_correct === "1";
+    });
 
     return (
         <Fragment>
             {
                 !isMobile ? (
                     <StyledContainerQuestions
-                        background="http://127.0.0.1:8000/images/fondo-cuestions.jpg"
+                        background="https://eml.com.co/e-learning-roche/roche/images/fondo-cuestions.jpg"
                         question={question}
                         isMobile={isMobile}
                     >
@@ -68,9 +71,9 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
                                                     open={!showQuestions}
                                                 >
                                                     <Grid item md={12}
-                                                          className="flex justify-center items-center h-full">
+                                                        className="flex justify-center items-center h-full">
                                                         <StyledModal
-                                                            background={"http://127.0.0.1:8000/images/popup.png"}>
+                                                            background={"https://eml.com.co/e-learning-roche/roche/images/popup1.png"}>
                                                             <div className="container">
                                                                 <div className="loader">
                                                                     <div className="rocket">
@@ -81,8 +84,8 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
                                                                         <i className="fas fa-cloud"></i>
                                                                     </div>
                                                                     <span>
-                                                            <i></i>
-                                                        </span>
+                                                                        <i></i>
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </StyledModal>
@@ -100,7 +103,7 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
                                             {
 
                                                 selectedQuestion.answers.map((item: any, index: number) => {
-                                                    let correctAnswer = selectedQuestion.answers.find((item: any) => item.is_correct === 1);
+
                                                     if (index === 0) {
                                                         return (
                                                             <Grid container className="items-center gap-2" key={index}>
@@ -154,7 +157,7 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
                     <StyledContainerQuestions
                         question={question}
                         isMobile={isMobile}
-                        background="http://127.0.0.1:8000/images/fondo-cuestions1.png"
+                        background="https://eml.com.co/e-learning-roche/roche/images/fondo-cuestions1.jpg"
                     >
                         {
                             question === 0 ? (
@@ -174,9 +177,9 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
                                                 open={!showQuestions}
                                             >
                                                 <Grid item md={12}
-                                                      className="flex justify-center items-center h-full">
+                                                    className="flex justify-center items-center h-full">
                                                     <StyledModal
-                                                        background={"http://127.0.0.1:8000/images/popup.png"}>
+                                                        background={"https://eml.com.co/e-learning-roche/roche/images/popup1.png"}>
                                                         <div className="container">
                                                             <div className="loader">
                                                                 <div className="rocket">
@@ -205,7 +208,6 @@ const Questions = ({module, description, questions, isMobile}: IQuestionsProps) 
                                             {
 
                                                 selectedQuestion.answers.map((item: any, index: number) => {
-                                                    let correctAnswer = selectedQuestion.answers.find((item: any) => item.is_correct === 1);
                                                     if (index === 0) {
                                                         return (
                                                             <Grid container className="items-center gap-2" key={index}>

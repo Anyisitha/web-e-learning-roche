@@ -34,6 +34,7 @@ const useModules = () => {
     }, [dispatch, id])
 
     const handlerShowContent = (sectionSelected: number) => {
+        console.log("id", sectionSelected);
         setShowContent(true)
         let sectionSeach = sections.find((item: any) => item.id === sectionSelected)
         

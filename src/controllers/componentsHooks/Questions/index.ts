@@ -24,25 +24,28 @@ const useQuestions = () => {
     const selectedQuestion = useSelector(questionSelector);
     const {question} = useSelector(questionNumberSelector);
 
+    console.log(selectedQuestion.answers, "select");
+
     /** Handlers */
 
     /**
      *  This function is used to make the change and the reaction of the system when selecting an answer.
      *  @param is_correct number.
      *  @param id number.
-     *  @param answer number.
      *  @param questions any[].
      *  @return void
      */
-    const validateQuestion = (is_correct: number, id: number, answer: string, questions: any[]) => {
+    const validateQuestion = (is_correct: string, id: number, answer: string, questions: any[]) => {
+        console.log(is_correct)
         let percentCorrect: number = questions.length * 0.8;
-        if (is_correct === 0 && oportunity === 0) {
+        console.log(percentCorrect)
+        if (is_correct === "0" && oportunity === 0) {
             Swal.fire({
                 icon: "error",
                 title: "Respuesta Incorrecta!",
                 text: "Tienes un intento mas para responder correctamente, Animo!"
             }).then(r => setOportunity(1));
-        } else if (is_correct === 1 && oportunity === 0) {
+        } else if (is_correct === "1" && oportunity === 0) {
             Swal.fire({
                 icon: "success",
                 title: "Respuesta Correcta!",
@@ -51,7 +54,11 @@ const useQuestions = () => {
                 setOportunity(0);
                 setResponses([...responses, {question: id, correct: true}]);
 
-                let newQuestion = questions.find((item: any) => item.id === question + 1);
+                let index = null;
+                let newQuestion = questions.find((item: any,  ind: number) => {
+                    index = ind;
+                    return item.id === question + 1
+                });
 
                 if (newQuestion !== undefined) {
                     // @ts-ignore
@@ -61,10 +68,10 @@ const useQuestions = () => {
                             //@ts-ignore
                             dispatch(actSetQuestionNumber({question: question + 1}))
                         }
-                    }, newQuestion))
+                    }, {...newQuestion, index: index}))
                 } else {
                     const totalResponses = responses.filter((item: any) => item.correct);
-                    if (totalResponses.length >= percentCorrect) {
+                    if (totalResponses.length + 1 >= percentCorrect) {
                         // @ts-ignore
                         dispatch(actSetQuestion({
                             onError: (error) => console.log(error),
@@ -97,7 +104,7 @@ const useQuestions = () => {
             });
         }
 
-        if (is_correct === 0 && oportunity === 1) {
+        if (is_correct === "0" && oportunity === 1) {
             Swal.fire({
                 icon: "error",
                 title: "Respuesta Incorrecta!",
@@ -105,8 +112,11 @@ const useQuestions = () => {
             }).then(r => {
                 setOportunity(0);
                 setResponses([...responses, {question: id, correct: false}]);
-
-                let newQuestion = questions.find((item: any) => item.id === question + 1);
+                let index = null;
+                let newQuestion = questions.find((item: any,  ind: number) => {
+                    index = ind;
+                    return item.id === question + 1
+                });
 
                 if (newQuestion !== undefined) {
                     // @ts-ignore
@@ -116,7 +126,7 @@ const useQuestions = () => {
                             //@ts-ignore
                             dispatch(actSetQuestionNumber({question: question + 1}))
                         }
-                    }, newQuestion))
+                    }, {...newQuestion, index: index}))
                 } else {
                     const totalResponses = responses.filter((item: any) => item.correct);
                     if (totalResponses.length >= percentCorrect) {
@@ -144,13 +154,13 @@ const useQuestions = () => {
                             icon: "error",
                             title: "Falto un poco mas!",
                             html: `Tranquilo(a) intentalo nuevamente para que puedas habilitar los siguientes modulos
-                                Tu nota fue de: <b>${totalResponses.length + 1}</b>
+                                Tu nota fue de: <b>${totalResponses.length}</b>
                             `
                         }).then(r => history.push("/dashboard"))
                     }
                 }
             });
-        } else if (is_correct === 1 && oportunity === 1) {
+        } else if (is_correct === "1" && oportunity === 1) {
             Swal.fire({
                 icon: "success",
                 title: "Respuesta Correcta!",
@@ -159,7 +169,11 @@ const useQuestions = () => {
                 setOportunity(0);
                 setResponses([...responses, {question: id, correct: true}]);
 
-                let newQuestion = questions.find((item: any) => item.id === question + 1);
+                let index = null;
+                let newQuestion = questions.find((item: any,  ind: number) => {
+                    index = ind;
+                    return item.id === question + 1
+                });
 
                 if (newQuestion !== undefined) {
                     // @ts-ignore
@@ -169,7 +183,7 @@ const useQuestions = () => {
                             //@ts-ignore
                             dispatch(actSetQuestionNumber({question: question + 1}))
                         }
-                    }, newQuestion))
+                    }, {...newQuestion, index: index}))
                 } else {
                     const totalResponses = responses.filter((item: any) => item.correct);
                     if (totalResponses.length >= percentCorrect) {
@@ -197,7 +211,7 @@ const useQuestions = () => {
                             icon: "error",
                             title: "Falto un poco mas!",
                             html: `Tranquilo(a) intentalo nuevamente para que puedas habilitar los siguientes modulos
-                                Tu nota fue de: <b>${totalResponses.length + 1}</b>
+                                Tu nota fue de: <b>${totalResponses.length}</b>
                             `
                         }).then(r => history.push("/dashboard"))
                     }
@@ -211,16 +225,25 @@ const useQuestions = () => {
      * @param questions Array
      */
     const handleChange = (questions: any[]) => {
-        let firstQuestion = questions.find((item: any) => item.id === 1);
-        console.log("newQuestion", firstQuestion)
+        let index = null;
+        let firstQuestion = questions.find((item: any,  ind: number) => {
+            index = ind + 1
+            return item.id === questions[0].id
+        });
+        
+
+
         // @ts-ignore
         dispatch(actSetQuestion({
             onError: (error: any) => console.log(error),
             onSuccess: () => {
                 //@ts-ignore
-                dispatch(actSetQuestionNumber({question: 1}));
+                dispatch(actSetQuestionNumber({question: questions[0].id}));
             }
-        }, firstQuestion));
+        }, {
+            ...firstQuestion,
+            index: index
+        }));
     }
 
     /**
@@ -237,7 +260,8 @@ const useQuestions = () => {
         handleChange,
         question,
         selectedQuestion,
-        resetTest
+        resetTest,
+        answers: selectedQuestion.answers
     }
 }
 

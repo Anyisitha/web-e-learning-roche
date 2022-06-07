@@ -13,7 +13,7 @@ const useLoginReducers = () => {
 
     /** Strings */
     const { useLoginTypes } = useStrings();
-    const { LOGIN } = useLoginTypes();
+    const { LOGIN, USER_PROGRESS } = useLoginTypes();
 
     const login = createReducer(loginInitialState, {
         [LOGIN](state: any, action: any){
@@ -42,10 +42,20 @@ const useLoginReducers = () => {
         }
     })
 
+    const userProgress = createReducer({}, {
+        [USER_PROGRESS](state: any, action: any){
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
+    })
+
     return {
         login,
         question,
-        questionNumber
+        questionNumber,
+        userProgress
     };
 }
 

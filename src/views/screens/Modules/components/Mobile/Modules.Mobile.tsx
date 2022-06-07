@@ -2,6 +2,7 @@ import {
     StyledButtonSection,
     StyledContainer,
     StyledContainerTab,
+    StyledGrid,
     StyledNumberModule,
     StyledPaper,
     StyledSpan,
@@ -11,6 +12,7 @@ import {Container, Grid, Tooltip} from "@mui/material";
 import React, {Fragment, useEffect} from "react";
 import useControllers from "controllers";
 import Questions from "../../Questions";
+import useModels from "models";
 
 const ModulesMobile = () => {
     /** Controllers */
@@ -35,7 +37,14 @@ const ModulesMobile = () => {
         getUserProgress();
     }, [getModulesSections, section, getUserProgress])
 
-    const Buttons = ({index, id, name}: { index: number; id: number; name: string; }) => {
+    const { useSelectors } = useModels();
+    const { useSelector, useLoginSelectors } = useSelectors();
+    const { userProgressSelector } = useLoginSelectors();
+    const { moduleFinished } = useSelector(userProgressSelector)
+
+    const moduleId = id;
+
+    const Buttons = ({ index, id, name }: { index: number; id: number; name: string; }) => {
         if (index > userProgress.sectionFinished) {
             return (
                 <Tooltip title="Contenido no activo">
@@ -59,15 +68,18 @@ const ModulesMobile = () => {
             )
         } else {
             return (
-                <StyledButtonSection
-                    disabled={index > userProgress.sectionFinished}
-                    completed={index < userProgress.sectionFinished}
-                    onClick={() => {
-                        handlerShowContent(id)
-                    }}
-                >
-                    {name}
-                </StyledButtonSection>
+                <>
+                    <StyledButtonSection
+                        disabled={index > userProgress.sectionFinished}
+                        completed={index < userProgress.sectionFinished}
+                        onClick={() => {
+                            handlerShowContent(id)
+                        }}
+                    >
+                        {name}
+                    </StyledButtonSection>
+                </>
+
             )
         }
     }
@@ -78,7 +90,7 @@ const ModulesMobile = () => {
                 <Grid container>
                     <StyledContainerTab fullWidth>
                         <StyledTab item md={12}>
-                            <StyledNumberModule>Módulo {id}</StyledNumberModule>
+                            <StyledNumberModule>MÓDULO {id}</StyledNumberModule>
                         </StyledTab>
                     </StyledContainerTab>
                 </Grid>
@@ -136,12 +148,24 @@ const ModulesMobile = () => {
                                 ) : (
                                     <Fragment>
                                         <StyledSpan>{description}</StyledSpan>
-                                        <Grid container className="items-center h-[65%] mt-16">
+                                        <Grid container className="items-center h-[65%] md:h-[40%] mt-16">
                                             {
                                                 sections.map((item: any, index: number) => (
-                                                    <Grid item md={12} xs={12}>
-                                                        <Buttons name={item.name} id={item.id} index={index}/>
-                                                    </Grid>
+                                                    <>
+                                                        {
+                                                            moduleId && (parseInt(moduleFinished) > parseInt(moduleId)) ? (
+                                                                    <StyledButtonSection
+                                                                        disabled={false}
+                                                                        completed={true}
+                                                                        onClick={() => handlerShowContent(parseInt(moduleId))}
+                                                                    >
+                                                                        {item.name}
+                                                                    </StyledButtonSection>
+                                                            ) : (
+                                                                    <Buttons name={item.name} id={item.id} index={index} />
+                                                            )
+                                                        }
+                                                    </>
                                                 ))
                                             }
                                         </Grid>
