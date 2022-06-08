@@ -226,7 +226,7 @@ const Dashboard = () => {
                                                                                     history.push(`/module/${item.id}`, {description: item.description})
                                                                             }}>
                                                                                 {
-                                                                                    userProgress.moduleFinished < index ? 'Completado' : 'iniciar'
+                                                                                    parseInt(userProgress.moduleFinished) === (index + 1) ? 'Iniciar' : 'Completado'
                                                                                 }
                                                                             </StyledButton>
                                                                         </Grid>
