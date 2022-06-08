@@ -222,7 +222,7 @@ const Dashboard = () => {
                                                             <Grid item lg={12} className="text-center pb-3">
                                                                 <Paper elevation={6}>
                                                                     <ImageComponent
-                                                                        image={item.description}
+                                                                        image={item.image}
                                                                         index={index}
                                                                     />
                                                                 </Paper>
