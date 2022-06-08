@@ -39,7 +39,7 @@ const Module = () => {
             await getUserProgress();
         }
 
-        executePetitions();
+        executePetitions().catch(err => console.log(err));
     }, [])
 
     useEffect(() => {

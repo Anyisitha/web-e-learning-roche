@@ -39,8 +39,8 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
         // eslint-disable-next-line
     }, []);
 
-    let correctAnswer = answers.find((item: any) => {
-        return item.is_correct === "1";
+    let correctAnswer = answers && answers.find((item: any) => {
+        return item.is_correct === 1;
     });
 
     return (

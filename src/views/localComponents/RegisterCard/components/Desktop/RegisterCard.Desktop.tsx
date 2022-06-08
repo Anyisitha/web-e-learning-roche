@@ -162,6 +162,7 @@ const RegisterCardDesktop = () => {
                             <StyledPaper elevation={6}>
                                 <StyledButton
                                     disabled={!isValid}
+                                    // @ts-ignore
                                     onClick={handleSubmit(handleCreateUser)}
                                 >
                                     Enviar

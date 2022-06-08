@@ -17,6 +17,7 @@ export const StyledAvancedText1 = styled.b`
 export const StyledCertificate = styled.img.attrs({
     className: "certificate"
 })`
+    ${tw`mt-2`}
 `
 
 export const StledCertificateContainer = styled.div`

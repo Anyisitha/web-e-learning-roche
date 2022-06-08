@@ -77,6 +77,7 @@ const LoginCard = () => {
                         <Link to="/modulo1">
                             <StyledButton 
                                 isregister={false}
+                                // @ts-ignore
                                 onClick={handleSubmit(handleLoginAdmin)}
                             >
                                 Iniciar sesión

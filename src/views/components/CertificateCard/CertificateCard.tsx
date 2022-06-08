@@ -11,7 +11,7 @@ const CertificateCard : FC<{isBody?: boolean}>= ({ isBody }) => {
 
     return (
         <StyledCertificateCard isBody={isBody}>
-            <Card sx={{ width: isBody ? "100%" : 270 }}>
+            <Card sx={{ width: isBody ? "100%" : 270, height: 165 }}>
                 <CardContent>
                     <StyledAvancedText1>Certificado</StyledAvancedText1>
                     <StledCertificateContainer>

@@ -24,9 +24,12 @@ export const StyledTitleHeader = styled.div.attrs({
 
 export const StyledSidebar = styled(Grid) <IContainerContent>`
     ${({ isGap }) => isGap ? tw`gap-y-4` : ""}
-    ${({ withOverflow }) => withOverflow ? tw`overflow-auto` : tw`overflow-hidden`}
     ${({ isCentered }) => isCentered ? tw`flex justify-center items-center` : ""}
     ${({ notFullScreen }) => !notFullScreen ? "height: calc(100vh - 82px)" : ""};
+
+  @media (min-width: 900px){
+      ${({ withOverflow }) => withOverflow ? tw`overflow-auto` : tw`overflow-hidden`}
+    }
 `;
 
 export const StyledContainerComponent = styled(Container)`
