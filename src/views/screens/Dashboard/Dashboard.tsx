@@ -13,13 +13,15 @@ import {
 import useControllers from "controllers";
 import useViews from "views";
 import {useEffect, useState} from "react";
-import {useHistory} from "react-router";
+import {useHistory, useParams} from "react-router";
 
 
 const Dashboard = () => {
     /** Components */
     const {useComponents} = useViews();
     const {CircleProgress, CertificateCard} = useComponents();
+
+    const {id} = useParams<{ id: string; }>();
 
     /** Controllers */
     const {useScreenHooks} = useControllers();
@@ -64,35 +66,14 @@ const Dashboard = () => {
         }
     }
 
-    const ButtonComponent = ({index, description, id}: { index: number; description: string, id: number; }) => {
-        console.log(index)
-        if (userProgress.moduleFinished === (index + 1)) {
-            return (
-                <Grid item lg={12} className="flex justify-center">
-                    <StyledButton onClick={() => history.push(`/module/${id}`, {description})}>Iniciar</StyledButton>
-                </Grid>
-            )
-        } else if (userProgress.moduleFinished > (index + 1)) {
-            return (
-                <Grid item lg={12} className="flex justify-center">
-                    <StyledButton>Completado</StyledButton>
-                </Grid>
-            )
-        } else {
-            return (
-                <Grid item lg={12} className="flex justify-center">
-                </Grid>
-            )
-        }
-    }
-
     /** States */
     const [width, setWidth] = useState<number>(window.innerWidth);
 
     window.addEventListener("resize", () => setWidth(window.innerWidth));
 
     return (
-        <StyledContainer background={window.innerWidth >= 1024 ? require("assets/images/fondo.gif") : require("assets/images/gitMovil.gif")}>
+        <StyledContainer
+            background={window.innerWidth >= 1024 ? require("assets/images/fondo.gif") : require("assets/images/gitMovil.gif")}>
             <div className="bg-[#e1e1e1ab]">
                 <Grid container>
                     <StyledSidebar
@@ -238,11 +219,19 @@ const Dashboard = () => {
                                                                 </div>
                                                             </Grid>
                                                             <Grid item lg={12} className="flex justify-center pt-5">
-                                                                <ButtonComponent
-                                                                    index={index}
-                                                                    description={item.name}
-                                                                    id={item.id}
-                                                                />
+                                                                {
+                                                                    parseInt(userProgress.moduleFinished) > index && (
+                                                                        <Grid item lg={12} className="flex justify-center">
+                                                                            <StyledButton onClick={() => {
+                                                                                    history.push(`/module/${item.id}`, {description: item.description})
+                                                                            }}>
+                                                                                {
+                                                                                    userProgress.moduleFinished < index ? 'Completado' : 'iniciar'
+                                                                                }
+                                                                            </StyledButton>
+                                                                        </Grid>
+                                                                    )
+                                                                }
                                                             </Grid>
                                                         </Grid>
                                                     ))

@@ -12,7 +12,7 @@ export const StyledContainerQuestions = styled.div.attrs({
     ${({ question }) => question === 0 ? tw`flex justify-center items-center` : tw`px-8 py-16 `}
     position: relative;
     ${({ isMobile }) => isMobile ? tw`h-[100%]` : tw`h-full`}
-    ${({ isMobile }) => isMobile ? "background-size: contain;" : "background-size: 100% 100%;"}
+    ${({ isMobile }) => isMobile ? "background-size: contain;" : "background-size: 100% 100%;"};
   
     @media (max-width: 1024px){
         ${tw`py-4`}
@@ -83,3 +83,10 @@ export const StyledSpan = styled.span`
         line-height: 1.5
     }
 `
+
+export const StyledSpanContent = styled.div`
+  &:hover {
+    background: linear-gradient(to left, #F7931E, #F15A24);
+    color: #ffffff;
+  }
+`;
