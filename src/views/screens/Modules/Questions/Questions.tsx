@@ -100,7 +100,7 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
                                 <Fragment>
                                     <StyledQuestion>{`${selectedQuestion.id}. ${selectedQuestion.question}`}</StyledQuestion>
                                     <div className="pl-8">
-                                        <ol type="A" className="mt-8">
+                                        <ol type="A" className="mt-6">
                                             {
 
                                                 selectedQuestion.answers.map((item: any, index: number) => {

@@ -1,8 +1,10 @@
 import { CardActions, Container } from "@mui/material";
 // import CuadroAmarillo from "assets/images/cuadro-amarillo.png";
 import useControllers from "controllers";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import useComponents from "views/components";
+import LostPassword from "views/screens/Home/lostPassword";
 import {
     StyledButton,
     StyledCard,
@@ -18,14 +20,21 @@ import {
 const LoginCard = () => {
     /** Components */
     const { Input } = useComponents();
-    
+
     /** Controllers */
     const { useScreenHooks } = useControllers();
     const { useLoginAdmin } = useScreenHooks();
     const { control, handleLoginAdmin, handleSubmit } = useLoginAdmin();
-    
+
+    //state
+    const [openModal, setOpenModal] = useState<boolean>(false)
+
     return (
         <StyledCard>
+            <LostPassword
+                open={openModal} 
+                onClose={() => setOpenModal(false)}    
+            />
             <StyledCardContent>
                 <StyledHeaderCard background={require('assets/images/gitMovil.gif')}>
                     <StyledTitleHeader>Iniciar sesión</StyledTitleHeader>
@@ -67,15 +76,16 @@ const LoginCard = () => {
                         />
                     </StyledInputContainer>
                 </Container>
+
                 <StyledTextPassword item lg={12}>
-                    <StyledPasswordLot>¿Olvidó su contraseña?</StyledPasswordLot>
+                    <StyledPasswordLot onClick={() => setOpenModal(true)}>¿Olvidó su contraseña?</StyledPasswordLot>
                 </StyledTextPassword>
             </StyledCardContent>
             <CardActions style={{ flexWrap: "wrap", justifyContent: "center", flexDirection: "column" }}>
                 <Container>
                     <StyledTextPassword item lg={12}>
                         <Link to="/modulo1">
-                            <StyledButton 
+                            <StyledButton
                                 isregister={false}
                                 // @ts-ignore
                                 onClick={handleSubmit(handleLoginAdmin)}
@@ -91,7 +101,7 @@ const LoginCard = () => {
                         </Link>
                     </StyledTextPassword>
                 </Container>
-            </CardActions>  
+            </CardActions>
         </StyledCard>
     )
 }

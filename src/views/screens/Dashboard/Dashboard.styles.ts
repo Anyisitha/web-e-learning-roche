@@ -60,10 +60,10 @@ export const StyledImageCard = styled.img<{ disabled: boolean }>`
 `;
 
 export const StyledTextCard = styled.span<{ bold: boolean }>`
-    ${tw`text-white text-base text-center mt-3`}
+    ${tw`text-white text-sm text-center mt-3`}
     ${({ bold }) => bold ? tw`font-bold` : ""}
     ${({ bold }) => bold ? 'font-family: "Gotham-medium" !important' : 'font-family: "Myriad Pro" !important'};
-    ${({ bold }) => bold ? 'font-size: 18px' : 'font-size: 15px'};
+    ${({ bold }) => bold ? 'font-size: 10px' : 'font-size: 15px'};
 `;
 
 export const StyledButton = styled(Button)`
