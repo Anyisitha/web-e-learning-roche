@@ -74,7 +74,7 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
                                                     <Grid item md={12}
                                                         className="flex justify-center items-center h-full">
                                                         <StyledModal
-                                                            background={"https://eml.com.co/e-learning-roche/roche/images/popup1.png"}>
+                                                            background={"https://eml.com.co/e-learning-roche/roche/images/popup2.png"}>
                                                             <div className="container">
                                                                 <div className="loader">
                                                                     <div className="rocket">
@@ -184,7 +184,7 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
                                                 <Grid item md={12}
                                                     className="flex justify-center items-center h-full">
                                                     <StyledModal
-                                                        background={"https://eml.com.co/e-learning-roche/roche/images/popup1.png"}>
+                                                        background={"https://eml.com.co/e-learning-roche/roche/images/popup2.png"}>
                                                         <div className="container">
                                                             <div className="loader">
                                                                 <div className="rocket">

@@ -42,14 +42,14 @@ const useQuestions = () => {
         if (is_correct === "0" && oportunity === 0) {
             Swal.fire({
                 icon: "error",
-                title: "Respuesta Incorrecta!",
-                text: "Tienes un intento mas para responder correctamente, Animo!"
+                title: "Respuesta incorrecta",
+                text: "Tienes un intento más para poder responder de manera correcta"
             }).then(r => setOportunity(1));
         } else if (is_correct === "1" && oportunity === 0) {
             Swal.fire({
                 icon: "success",
-                title: "Respuesta Correcta!",
-                text: "Bien!, contestaste correctamente"
+                title: "Respuesta correcta",
+                text: "¡Bien! Contestaste de manera correcta."
             }).then(r => {
                 setOportunity(0);
                 setResponses([...responses, {question: id, correct: true}]);
@@ -80,8 +80,8 @@ const useQuestions = () => {
                                 dispatch(actSetQuestionNumber({question: 0}))
                                 Swal.fire({
                                     icon: "success",
-                                    title: "Completaste el modulo!",
-                                    html: `Gracias por completar el modulo, ahora puede seguir con el siguiente modulo.`
+                                    title: "¡Completaste el módulo!",
+                                    html: `Ahora puedes continuar con el siguiente.`
                                 }).then(r => {
                                     // @ts-ignore
                                     dispatch(actSetModuleFinished({
@@ -107,8 +107,8 @@ const useQuestions = () => {
         if (is_correct === "0" && oportunity === 1) {
             Swal.fire({
                 icon: "error",
-                title: "Respuesta Incorrecta!",
-                html: `la respuesta correcta era: <b>${answer}</b>`
+                title: "Respuesta incorrecta",
+                html: `la respuesta correcta es: <b>${answer}</b>`
             }).then(r => {
                 setOportunity(0);
                 setResponses([...responses, {question: id, correct: false}]);
@@ -138,8 +138,8 @@ const useQuestions = () => {
                                 dispatch(actSetQuestionNumber({question: 0}))
                                 Swal.fire({
                                     icon: "success",
-                                    title: "Completaste el modulo!",
-                                    html: `Gracias por completar el modulo, ahora puede seguir con el siguiente modulo.`
+                                    title: "¡Completaste el módulo!",
+                                    html: `Ahora puedes continuar con el siguiente.`
                                 }).then(r => {
                                     // @ts-ignore
                                     dispatch(actSetModuleFinished({
@@ -163,8 +163,8 @@ const useQuestions = () => {
         } else if (is_correct === "1" && oportunity === 1) {
             Swal.fire({
                 icon: "success",
-                title: "Respuesta Correcta!",
-                text: "Bien!, contestaste correctamente"
+                title: "Respuesta correcta",
+                text: "¡Bien! Contestaste de manera correcta."
             }).then(r => {
                 setOportunity(0);
                 setResponses([...responses, {question: id, correct: true}]);
@@ -195,8 +195,8 @@ const useQuestions = () => {
                                 dispatch(actSetQuestionNumber({question: 0}))
                                 Swal.fire({
                                     icon: "success",
-                                    title: "Completaste el modulo!",
-                                    html: `Gracias por completar el modulo, ahora puede seguir con el siguiente modulo.`
+                                    title: "¡Completaste el módulo!",
+                                    html: `Ahora puedes continuar con el siguiente.`
                                 }).then(r => {
                                     // @ts-ignore
                                     dispatch(actSetModuleFinished({

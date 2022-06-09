@@ -83,6 +83,7 @@ const Dashboard = () => {
 
 
     window.addEventListener("resize", () => setWidth(window.innerWidth));
+    
 
     return (
         <StyledContainer 
