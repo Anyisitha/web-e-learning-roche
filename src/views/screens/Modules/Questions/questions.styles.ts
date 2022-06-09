@@ -9,7 +9,7 @@ export const StyledContainerQuestions = styled.div.attrs({
     width: 100%;
   background: url('${({ background }) => background}') bottom right no-repeat, linear-gradient(to right, #c3c3c1, #fff);
   
-    ${({ question }) => question === 0 ? tw`flex justify-center items-center` : tw`px-8 py-16 `}
+    ${({ question }) => question === 0 ? tw`flex justify-center items-center` : tw`px-8 py-6`}
     position: relative;
     ${({ isMobile }) => isMobile ? tw`h-[100%]` : tw`h-full`}
     ${({ isMobile }) => isMobile ? "background-size: contain;" : "background-size: 100% 100%;"};
@@ -66,7 +66,7 @@ export const StyledModal = styled(Box) <{ background?: string; }>`
 `
 
 export const StyledQuestion = styled.h1`
-    ${tw`text-primary font-bold text-[25px]`}
+    ${tw`text-primary font-bold text-[22px]`}
     font-family: "Myriad Pro";
     
     @media (max-width: 1024px){
