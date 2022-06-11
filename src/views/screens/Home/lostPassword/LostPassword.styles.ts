@@ -10,6 +10,7 @@ export const StyledCard = styled(Card)`
 
     @media (max-width: 899px) {
         ${tw`w-full`}
+        background-color: #ffffff90 !important;
     }
 `
 
@@ -30,7 +31,7 @@ export const StyledLabel = styled.label`
 `
 
 export const StyledTitleHeader = styled.title`
-    ${tw`text-white font-bold fontSize[25px]`}
+    ${tw`text-white font-bold text-[25px]`}
 `
 
 export const StyledButton = styled(Button)`
