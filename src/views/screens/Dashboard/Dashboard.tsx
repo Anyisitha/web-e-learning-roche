@@ -116,7 +116,7 @@ const Dashboard = () => {
                             },
                             repulse: {
                                 distance: 200,
-                                duration: 3,
+                                duration: 20,
                             },
                         },
                     },

@@ -35,12 +35,9 @@ const LostPassword: FC<ILostPasswordProps> = ({
                         <Grid item md={12} xs={12} className="flex justify-center pt-5">
                             <Grid item md={8} xs={9} sm={9}>
                                 <Grid item md={12}>
-                                    <StyledLabel htmlFor="">Email</StyledLabel>
-                                </Grid>
-                                <Grid item md={12}>
                                     <Controller control={control} name="email" rules={{}} render={({ }) => (<>
                                         <Paper elevation={4} style={{ backgroundColor: "transparent" }}>
-                                            <StyledInput />
+                                            <StyledInput placeholder="Correo electrónico" />
                                         </Paper>
                                     </>)} />
                                 </Grid>
@@ -51,12 +48,9 @@ const LostPassword: FC<ILostPasswordProps> = ({
                         <Grid item md={12} className="flex justify-center pt-5">
                             <Grid item md={8}>
                                 <Grid item md={12}>
-                                    <StyledLabel htmlFor="">contraseña</StyledLabel>
-                                </Grid>
-                                <Grid item md={12}>
                                     <Controller control={control} name="password" rules={{}} render={({ }) => (<>
                                         <Paper elevation={4} style={{ backgroundColor: "transparent" }}>
-                                            <StyledInput />
+                                            <StyledInput placeholder="Contrasena"/>
                                         </Paper>
                                     </>)} />
                                 </Grid>
@@ -67,12 +61,9 @@ const LostPassword: FC<ILostPasswordProps> = ({
                         <Grid item md={12} className="flex justify-center pt-5">
                             <Grid item md={8}>
                                 <Grid item md={12}>
-                                    <StyledLabel htmlFor="">Confirmar contraseña</StyledLabel>
-                                </Grid>
-                                <Grid item md={12}>
                                     <Controller control={control} name="confirmar password" rules={{}} render={({ }) => (<>
                                         <Paper elevation={4} style={{ backgroundColor: "transparent" }}>
-                                            <StyledInput />
+                                            <StyledInput placeholder="Confirmar contrasena"/>
                                         </Paper>
                                     </>)} />
                                 </Grid>
