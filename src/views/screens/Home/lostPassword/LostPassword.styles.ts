@@ -19,6 +19,10 @@ export const StyledInput = styled.input`
     border: 1px solid #fff;
     border-radius: 8px;
     color: #fff;
+
+    &::placeholder {
+        color: #fff !important;
+    }
 `
 
 export const StyledLabel = styled.label`
@@ -31,14 +35,13 @@ export const StyledTitleHeader = styled.title`
 
 export const StyledButton = styled(Button)`
     ${tw`w-[200px]`}
-    background: #fff !important;
+    box-shadow: 0 1px 3px rgba(229, 68, 22), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     border: 1px solid #fff;
-    border-radius: 8px;
-    color: #F7931E !important;
+    border-radius: 19px !important;
+    background-image: linear-gradient(to right, rgb(229, 68, 22) 80%, white) !important;
+    color: #fff !important;
 
-    &:hover {
-        background-image: linear-gradient(to right, rgb(229, 68, 22) 80%, white) !important;
-        color: #fff !important;
-    }
+    
     
 `
