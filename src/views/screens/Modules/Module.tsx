@@ -16,6 +16,7 @@ import Questions from "./Questions";
 import ModulesMobile from "./components/Mobile/Modules.Mobile";
 import useModels from "models";
 import { IButtonProps } from "models/interfaces/modules.interfaces";
+import MessageModal from "./components/MessageModal";
 
 
 
@@ -51,6 +52,7 @@ const Module = () => {
 
     return width >= 1024 ? (
         <StyledContainer>
+            <MessageModal/>
             <Container>
                 <Grid container>
                     <StyledContainerTab>

@@ -13,6 +13,7 @@ import React, {Fragment, useEffect} from "react";
 import useControllers from "controllers";
 import Questions from "../../Questions";
 import useModels from "models";
+import MessageModal from "../MessageModal";
 
 const ModulesMobile = () => {
     /** Controllers */
@@ -86,6 +87,7 @@ const ModulesMobile = () => {
 
     return (
         <StyledContainer>
+            <MessageModal/>
             <Container>
                 <Grid container>
                     <StyledContainerTab fullWidth>
