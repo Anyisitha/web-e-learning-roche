@@ -6,10 +6,12 @@ import tw from "twin.macro";
 export const StyledCard = styled(Card)
     <{background?: string;}>
 `
-    ${tw`w-[70%] py-10`}
+    ${tw`w-[70%] py-20`}
     ${({background}) => background && `background-image: url("${background}");`}
     border-radius: 30px !important;
-    background-size: cover;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
     
     @media (max-width: 899px) {
         ${tw`w-full`}

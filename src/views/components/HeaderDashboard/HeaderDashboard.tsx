@@ -65,9 +65,9 @@ const HeaderDashboard = () => {
                                 <IconButton>
                                     <StyledHomeIcon fontSize="large" onClick={() => history.push("/dashboard")} />
                                 </IconButton>
-                                <IconButton>
+                                {/* <IconButton>
                                     <StyledSearchIcon fontSize="large" />
-                                </IconButton>
+                                </IconButton> */}
                                 <IconButton onClick={() => handlerOpenDrawer(true)}>
                                     <StyledMenuIcon fontSize="large" />
                                 </IconButton>
