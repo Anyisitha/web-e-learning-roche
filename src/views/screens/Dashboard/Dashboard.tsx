@@ -310,8 +310,10 @@ const Dashboard = () => {
                                                             </Grid>
                                                             <Grid item lg={12} className="flex justify-center pt-5">
                                                                 {
-                                                                    parseInt(userProgress.moduleFinished) > index && (
-                                                                        <Grid item lg={12} className="flex justify-center">
+                                                                    <Grid item lg={12} className="flex justify-center" style={{ visibility:
+
+                                                                     parseInt(userProgress.moduleFinished) > index ? "visible" : "hidden" }}>
+                                                                        
                                                                             <StyledButton onClick={() => {
                                                                                     history.push(`/module/${item.id}`, {description: item.description})
                                                                             }}>
@@ -319,8 +321,7 @@ const Dashboard = () => {
                                                                                     parseInt(userProgress.moduleFinished) === (index + 1) ? 'Iniciar' : 'Completado'
                                                                                 }
                                                                             </StyledButton>
-                                                                        </Grid>
-                                                                    )
+                                                                    </Grid>
                                                                 }
                                                             </Grid>
                                                         </Grid>
