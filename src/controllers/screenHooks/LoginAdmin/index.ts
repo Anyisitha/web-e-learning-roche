@@ -46,14 +46,14 @@ const useLoginAdmin = () => {
                 if(error.response.status === 404) {
                     Swal.fire({
                         icon: "error",
-                        title: "Usuario no encontado!",
-                        text: "Validad los datos y vuelve a intentarlo",
+                        title: "¡Usuario no encrontado!",
+                        text: "Valide sus datos y vuelvalo a intentar",
                     })
                 } else {
                     Swal.fire({
                         icon: "error",
                         title: "Su usuario o contraseña son incorrectas",
-                        text: "Validad su contraseña vuelve a intentarlo",
+                        text: "Valide su contraseña y vuelvalo a intentar",
                     })
                 }
             }
