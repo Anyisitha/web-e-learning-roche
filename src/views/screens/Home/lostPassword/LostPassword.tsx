@@ -62,6 +62,7 @@ const LostPassword: FC<ILostPasswordProps> = ({
                                                 onChange={(e) => field.onChange(e)}
                                                 name={field.name}
                                                 value={field.value}
+                                                type="password"
                                             />
                                         </Paper>
                                     </>)} />
@@ -80,6 +81,7 @@ const LostPassword: FC<ILostPasswordProps> = ({
                                                 onChange={(e) => field.onChange(e)}
                                                 name={field.name}
                                                 value={field.value}
+                                                type="password"
                                             />
                                         </Paper>
                                     </>)} />
@@ -89,6 +91,7 @@ const LostPassword: FC<ILostPasswordProps> = ({
 
                         {/* Buttom */}
                         <Grid item md={12} className="flex justify-center pt-5">
+                            {/* @ts-ignore */}
                             <StyledButton onClick={handleSubmit(handleChangePassword)}>Guardar</StyledButton>
                         </Grid>
                         <Grid item md={12} className="flex justify-center pt-5 cancel-button">
