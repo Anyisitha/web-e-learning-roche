@@ -58,7 +58,7 @@ const LostPassword: FC<ILostPasswordProps> = ({
                                     <Controller control={control} name="password" rules={{}} render={({ field }) => (<>
                                         <Paper elevation={4} style={{ backgroundColor: "transparent" }}>
                                             <StyledInput
-                                                placeholder="Contrasena"
+                                                placeholder="Contraseña"
                                                 onChange={(e) => field.onChange(e)}
                                                 name={field.name}
                                                 value={field.value}
@@ -77,7 +77,7 @@ const LostPassword: FC<ILostPasswordProps> = ({
                                     <Controller control={control} name="confirm_password" rules={{}} render={({ field }) => (<>
                                         <Paper elevation={4} style={{ backgroundColor: "transparent" }}>
                                             <StyledInput
-                                                placeholder="Confirmar contrasena"
+                                                placeholder="Confirmar contraseña"
                                                 onChange={(e) => field.onChange(e)}
                                                 name={field.name}
                                                 value={field.value}
