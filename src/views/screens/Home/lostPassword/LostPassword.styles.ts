@@ -3,11 +3,14 @@ import { Card, Button } from "@mui/material";
 import styled from "styled-components";
 import tw from "twin.macro";
 
-export const StyledCard = styled(Card)`
+export const StyledCard = styled(Card)
+    <{background?: string;}>
+`
     ${tw`w-[70%] py-10`}
-    background-color: #ffffff70 !important;
+    ${({background}) => background && `background-image: url("${background}");`}
     border-radius: 30px !important;
-
+    background-size: cover;
+    
     @media (max-width: 899px) {
         ${tw`w-full`}
         background-color: #ffffff90 !important;
