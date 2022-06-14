@@ -25,7 +25,7 @@ const LostPassword: FC<ILostPasswordProps> = ({
             className="modal-lost-password"
         >
             <div className="w-full h-full flex justify-center items-center">
-                <StyledCard background={require("assets/images/modal-image-module.png")}>
+                <StyledCard background={require("assets/images/modal-image-module1.png")}>
                     <CardContent>
                         <Grid item md={12}>
                             <StyledTitleHeader className="flex justify-center">
