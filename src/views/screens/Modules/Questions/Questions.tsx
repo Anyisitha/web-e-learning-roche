@@ -59,7 +59,7 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
                                     {
                                         showQuestions ? (
                                             <Fragment>
-                                                <StyledTitle>Cuestionario modulo {module}</StyledTitle>
+                                                <StyledTitle>Cuestionario módulo {module}</StyledTitle>
                                                 <StyledDescription>{description}</StyledDescription>
                                                 <Grid md={12} className="flex justify-center mt-6">
                                                     <StyledButton
@@ -170,7 +170,7 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
                                     {
                                         showQuestions ? (
                                             <Fragment>
-                                                <StyledTitle>Cuestionario modulo {module}</StyledTitle>
+                                                <StyledTitle>Cuestionario módulo {module}</StyledTitle>
                                                 <StyledDescription>{description}</StyledDescription>
                                                 <Grid md={12} className="flex justify-center mt-2 md:mt-6">
                                                     <StyledButton
