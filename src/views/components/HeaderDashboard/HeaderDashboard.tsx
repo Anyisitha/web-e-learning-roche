@@ -121,8 +121,8 @@ const HeaderDashboard = () => {
                         modules && modules.map((item: any, index: number) => (
                             <Grid item md={12} className="flex justify-center pt-6">
                                 <StyledButtonDrawer onClick={() => history.push(`/module/${item.id}`, { description: item.name })}>
-                                    Módulo {index + 1}
-                                    <span className="hidden">{item.name}</span>
+                                    Módulo {index + 1} 
+                                    <span className="ml-3" > {item.name}</span>
                                 </StyledButtonDrawer>
                             </Grid>
                         ))

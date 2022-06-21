@@ -68,7 +68,7 @@ const Module = () => {
                                 showContent ? (
                                     <Fragment>
                                         {
-                                            section.content.type !== "Test" && (
+                                            (section.content.type !== "Test" && section.content.type !== "Video" ) && (
                                                 <span
                                                     className="text-white absolute z-[1] right-[5%] top-[3%] cursor-pointer"
                                                     onClick={saveSection}

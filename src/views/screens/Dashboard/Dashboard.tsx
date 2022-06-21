@@ -97,7 +97,7 @@ const Dashboard = () => {
                             value: "transparent",
                         },
                     },
-                    fpsLimit: 120,
+                    fpsLimit: 0,
                     interactivity: {
                         events: {
                             onClick: {
