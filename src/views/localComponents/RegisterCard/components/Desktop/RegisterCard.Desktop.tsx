@@ -110,7 +110,7 @@ const RegisterCardDesktop = () => {
                                 <Grid container>
                                     <Grid item lg={6} className="flex w-full items-center">
                                         <Grid item lg={3}>
-                                            <label className="text-right font-bold text-white">Contrasena: *</label>
+                                            <label className="text-right font-bold text-white">Contraseña: *</label>
                                         </Grid>
                                         <Grid item lg={9} className="flex justify-start w-full">
                                             <Input
@@ -131,7 +131,7 @@ const RegisterCardDesktop = () => {
                                     </Grid>
                                     <Grid item lg={6} className="flex w-full items-center">
                                         <Grid item lg={3}>
-                                            <label className="text-left font-bold text-white">Confirmar contrasena: *</label>
+                                            <label className="text-left font-bold text-white">Confirmar contraseña: *</label>
                                         </Grid>
                                         <Grid item lg={9} className="flex justify-start w-full">
                                             <Input

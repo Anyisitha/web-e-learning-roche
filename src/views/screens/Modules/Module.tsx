@@ -41,7 +41,7 @@ const Module = () => {
         }
 
         executePetitions().catch(err => console.log(err));
-    }, [])
+    }, [id])
 
     useEffect(() => {
         getModulesSections();

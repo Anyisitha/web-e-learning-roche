@@ -135,13 +135,13 @@ const Dashboard = () => {
                             enable: true,
                         },
                         move: {
-                            direction: "none",
+                            direction: "left",
                             enable: true,
                             outModes: {
                                 default: "bounce",
                             },
                             random: false,
-                            speed: 2,
+                            speed: 1.5,
                             straight: false,
                         },
                         number: {

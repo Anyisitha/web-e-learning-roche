@@ -27,8 +27,8 @@ const useLostPassword = (onClose: () => void) => {
                     onClose && onClose();
                     Swal.fire({
                         icon: "success",
-                        title: "Cambio de contrasena exitoso!",
-                        text: "Perfecto, ya que pudiste cambiar la contrasena ahora puedes ingresar a nuestra plataforma."
+                        title: "Cambio de contraseña exitoso!",
+                        text: "Perfecto, ya que pudiste cambiar la contraseña ahora puedes ingresar a nuestra plataforma."
                     }).then(res => {
                         if(res.isConfirmed) return window.location.reload();
                     })
@@ -38,8 +38,8 @@ const useLostPassword = (onClose: () => void) => {
         }else{
             Swal.fire({
                 icon: "error",
-                title: "Las contrasenas no coinciden.",
-                text: "Rectifica tus contrasenas y acuerdate que las dos contrasenas deben coincidir"
+                title: "Las contraseñas no coinciden.",
+                text: "Rectifica tus contraseñas y acuerdate que las dos contraseñas deben coincidir"
             }).catch(err => console.log(err));
         }
     }
