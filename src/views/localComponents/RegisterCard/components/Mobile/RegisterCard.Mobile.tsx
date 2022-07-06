@@ -124,7 +124,7 @@ const RegisterCardMobile = () => {
                         <Grid item md={4} xs={12} className="py-2.5 md:px-2.5">
                             <span className="text-white text-justify">En el cumplimiento de la Ley 1581 de 2012 sobre <i>Habeas Data</i>, el régimen general de protección de datos personales y sobre
                                 manejo de los mismos, acepto los términos presentados por Roche. Conozca los términos y condiciones <a
-                                    href="/" className="text-black"><b>aquí.</b></a> </span>
+                                    href="https://www.eml.com.co/e-learning-roche/roche/autorizaci%C3%B3n/autorizacion_de_tratamiento_de_datos_personales.pdf" className="text-black"><b>aquí.</b></a> </span>
                         </Grid>
                         <Grid item md={4} xs={12} className="py-2.5 md:px-2.5">
                             <StyledPaper elevation={6}>
