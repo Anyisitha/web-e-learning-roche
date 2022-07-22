@@ -40,10 +40,9 @@ const Questions = ({ module, description, questions, isMobile }: IQuestionsProps
     }, []);
 
     let correctAnswer = answers && answers.find((item: any) => {
-        return item.is_correct === "1";
+        return item.is_correct === 1;
     });
-
-
+    console.log(correctAnswer);
     return (
         <Fragment>
             {

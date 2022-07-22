@@ -35,17 +35,17 @@ const useQuestions = () => {
      *  @param questions any[].
      *  @return void
      */
-    const validateQuestion = (is_correct: string, id: number, answer: string, questions: any[]) => {
+    const validateQuestion = (is_correct: number, id: number, answer: number, questions: any[]) => {
         console.log(is_correct)
         let percentCorrect: number = questions.length * 0.8;
         console.log(percentCorrect)
-        if (is_correct === "0" && oportunity === 0) {
+        if (is_correct === 0 && oportunity === 0) {
             Swal.fire({
                 icon: "error",
                 title: "Respuesta incorrecta",
                 text: "Tienes un intento más para poder responder de manera correcta"
             }).then(r => setOportunity(1));
-        } else if (is_correct === "1" && oportunity === 0) {
+        } else if (is_correct === 1 && oportunity === 0) {
             Swal.fire({
                 icon: "success",
                 title: "Respuesta correcta",
@@ -104,7 +104,7 @@ const useQuestions = () => {
             });
         }
 
-        if (is_correct === "0" && oportunity === 1) {
+        if (is_correct === 0 && oportunity === 1) {
             Swal.fire({
                 icon: "error",
                 title: "Respuesta incorrecta",
@@ -160,7 +160,7 @@ const useQuestions = () => {
                     }
                 }
             });
-        } else if (is_correct === "1" && oportunity === 1) {
+        } else if (is_correct === 1 && oportunity === 1) {
             Swal.fire({
                 icon: "success",
                 title: "Respuesta correcta",
